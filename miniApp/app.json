@@ -1,7 +1,8 @@
 {
   "pages": [
-    "pages/netAge/index/index",
-    "pages/netAge/ChallengeBook/ChallengeBook"
+    "pages/netAge/ChallengeBook/ChallengeBook",
+    "pages/netAge/index/index"
+    
   ],
   "window": {
     "backgroundTextStyle": "light",

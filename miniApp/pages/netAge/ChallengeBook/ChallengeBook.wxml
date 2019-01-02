@@ -1,2 +1,11 @@
 <!--接受挑战页-->
-<view class='show-background' style="background-image"></view>
+<view class='show-background' style='background-image:url({{localhost}}1.png);'>
+  <view class='off' bindtap='offBook'></view>
+  <view class='friendTel'>
+  {{friendTel}}
+  </view>
+  <input class='myTel' type='text' bindinput='myTel' value='{{myTel}}'></input>
+  <button class="cutTel">换一个号码</button>
+  <button class='accep' bindtap='accep'></button>
+  <button class='getPrize' bindtap='getPrize'></button>
+</view>
