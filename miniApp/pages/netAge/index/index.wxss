@@ -29,7 +29,7 @@
   left: 60rpx;
   top: 690rpx;
   width: 625rpx;
-  height: 780rpx;
+  height: 800rpx;
   background-color: #f7cd9c;
 }
 .recordDate{
@@ -39,7 +39,7 @@
   color: #98475a;
 }
 .record{
-  /* position: relative; */
+  position: relative;
   margin-bottom: 20rpx;
   width: 625rpx;
   height: 125rpx;
@@ -55,15 +55,30 @@
 }
 .recipient{
    display: inline;
-  font-size: 1rem;
-  font-weight: 590;
+  font-size: 0.8rem;
+  font-weight: 600;
   color:#98475a;
-  margin: 0;
 }
 .challenger{
   display: inline;
-  font-size: 1rem;
-  font-weight: 590;
+  font-size: 0.8rem;
+  font-weight: 600;
   color:#98475a;
-  margin: 0;
+  margin-left: 68rpx;
+}
+.marker{
+  position: absolute;
+  top: 0;
+  left: 1rpx;
+  width: 55rpx;
+  height: 59rpx;
+  background-size: cover;
+}
+.state{
+  position: absolute;
+  top: 15.5rpx;
+  right: 20rpx;
+  width: 217rpx;
+  height: 84rpx;
+  background-size: cover;
 }

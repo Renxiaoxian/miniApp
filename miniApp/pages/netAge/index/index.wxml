@@ -3,11 +3,15 @@
   <text bindtap='rule' class='rule'>活动规则</text>
   <text bindtap='activation' class='activation'>去领券中心激活</text>
   <view class='recordList'>
-    <text class='recordDate'>2019.11.12</text>
-    <view class='record'style='background-image:url({{localhost}}recordbackground.png);'>
-        <view class='challenger'>我</view>
+    <view wx:for="{{pkRecord}}">
+      <text class='recordDate'>{{item.date}}</text>
+    <view class='record'style='background-image:url({{localhost}}recordbackground.png);' wx:for="{{item.list}}" wx:for-item="listItem">
+        <view class='marker' style='background-image:url({{localhost}}success.png);'></view>
+        <view class='challenger'>{{listItem.message}}</view>
         <image class='vs' src='{{localhost}}vs.png'></image>
-        <view class='recipient'>你</view>
+        <view class='recipient'>{{listItem.message}}</view>
+        <view class='state' style='background-image:url({{localhost}}oneself.png);'></view>
+    </view>
     </view>
   </view>
 </view>

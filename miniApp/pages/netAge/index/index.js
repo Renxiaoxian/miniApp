@@ -5,7 +5,24 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    pkRecord: [
+      {
+        date:'2019.01.03',
+        list:[{
+          message: 'foo',
+        }, {
+            message: 'bar'
+          }]
+      },
+      {
+        date: '2019.01.03',
+        list: [{
+          message: 'foo',
+        }, {
+          message: 'bar'
+        }]
+      }
+    ]
   },
 
   /**
