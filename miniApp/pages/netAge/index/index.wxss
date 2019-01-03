@@ -1,1 +1,69 @@
 /* pages/netAge/index/index.wxss */
+.show-background{
+  position: absolute;
+  width:100%;
+  min-height: 1668rpx;
+  max-height: 100%;
+  background-size:100%; 
+  background-color: #d63022;
+  background-repeat: no-repeat; 
+}
+.rule{
+  position: absolute;
+  left: 40rpx;
+  top: 490rpx;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #f7cd9c;
+}
+.activation{
+  position: absolute;
+  right: 40rpx;
+  top: 490rpx;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #f7cd9c;
+}
+ .recordList{
+  position: absolute;
+  left: 60rpx;
+  top: 690rpx;
+  width: 625rpx;
+  height: 780rpx;
+  background-color: #f7cd9c;
+}
+.recordDate{
+  font-size: 0.7rem;
+  margin-bottom: 20rpx;
+  display: block;
+  color: #98475a;
+}
+.record{
+  /* position: relative; */
+  margin-bottom: 20rpx;
+  width: 625rpx;
+  height: 125rpx;
+  background-size: cover;
+  line-height: 125rpx;
+}
+.vs{
+  width: 55rpx;
+  height: 75rpx;
+  text-align:center;
+  vertical-align:middle;
+  margin: auto 10rpx
+}
+.recipient{
+   display: inline;
+  font-size: 1rem;
+  font-weight: 590;
+  color:#98475a;
+  margin: 0;
+}
+.challenger{
+  display: inline;
+  font-size: 1rem;
+  font-weight: 590;
+  color:#98475a;
+  margin: 0;
+}

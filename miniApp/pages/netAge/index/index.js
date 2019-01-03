@@ -21,7 +21,14 @@ Page({
   onReady: function () {
 
   },
-
+  // 活动规则
+  rule:function(){
+    console.log("活动规则")
+  },
+  // 去激活
+  activation: function () {
+    console.log("去激活")
+  },
   /**
    * 生命周期函数--监听页面显示
    */
