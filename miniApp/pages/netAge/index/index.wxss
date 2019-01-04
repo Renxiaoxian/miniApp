@@ -24,13 +24,21 @@
   font-size: 0.8rem;
   color: #f7cd9c;
 }
+.pkBox{
+  position: absolute;
+  left: 15rpx;
+  top: 560rpx;
+  width: 724rpx;
+  height: 1015rpx;
+  background-size: cover;
+}
  .recordList{
   position: absolute;
-  left: 60rpx;
-  top: 690rpx;
+  left: 50rpx;
+  top: 125rpx;
   width: 625rpx;
   height: 800rpx;
-  background-color: #f7cd9c;
+  overflow: auto;
 }
 .recordDate{
   font-size: 0.7rem;
@@ -76,9 +84,60 @@
 }
 .state{
   position: absolute;
-  top: 15.5rpx;
+  top: 20rpx;
   right: 20rpx;
   width: 217rpx;
   height: 84rpx;
   background-size: cover;
 }
+.startPk{
+  position: absolute;
+  left: 50%;
+  top: 350rpx;
+  margin-left: -321.5rpx;
+  width: 643rpx;
+  height: 133rpx;
+  background-size: cover;
+}
+.footer{
+  margin: 25rpx auto 0;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #98475a;
+}
+
+/* 弹框 */
+.mask{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+.modal-content{
+  position: absolute;
+  left: 50%;
+  top: 330rpx;
+  width: 660rpx;
+  height: 830rpx;
+  margin-left: -330rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.close{
+  width: 72rpx;
+  height: 72rpx;
+  position: absolute;
+  right: 53rpx;
+  top: 213rpx;
+  background-size: cover;
+  z-index: 888
+}
+
+
