@@ -55,8 +55,6 @@ App({
           },
         })
       })
-      
-
     }
   },
   globalData: {

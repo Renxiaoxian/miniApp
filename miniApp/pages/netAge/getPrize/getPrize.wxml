@@ -1,0 +1,84 @@
+<!--pages/netAge/getPrize/getPrize.wxml-->
+<image class='headeImg' src='/image/header-bai.jpg' mode="widthFix"></image>
+<view class="header_p">
+  <text>“移”路同行 感恩有礼，点击查看您与中国移动的相知</text>
+  <text>和陪伴岁月，领取您的专属礼品</text>
+</view>
+<view class='netTime'>入网时间：
+  <text>2018</text>年
+  <text>04</text>月
+  <text>01</text>日</view>
+<button class="startJisuan">开始计算</button>
+<image class="beishuImg" src='/image/beishu.jpg' mode="widthFix"></image>
+<view class="jinduBlock">
+  <!--进度条-->
+  <view class="jindu_load jindu_load1"></view>
+  <view class="jindu_load jindu_load2"></view>
+  <view class="jindu_load jindu_load3"></view>
+  <view class="jindu_load jindu_load4"></view>
+  <view class="jindu_load jindu_load5"></view>
+  <!--圆圈-->
+  <view class="circle circle1 circle_active">
+    <view></view>
+  </view>
+  <view class="circle circle2 circle_active">
+    <view></view>
+  </view>
+  <view class="circle circle3">
+    <view></view>
+  </view>
+  <view class="circle circle4">
+    <view></view>
+  </view>
+  <view class="circle circle5">
+    <view></view>
+  </view>
+</view>
+<!--在网时间-->
+<view class="zaiwangTime">
+  在网时间
+  <view>268</view>月
+</view>
+<!--激活-->
+<view class="jihuoBlock">
+  <image src="/image/jihuoBg.jpg" mode="widthFix"></image>
+  <view class="beishuPart">
+    <view class="beishuPart_left">
+      <text class="beishuPart_part_p1">500M
+      </text>
+      <text class="beishuPart_part_p2">流量</text>
+      <image class="fire_icon" src="/image/fire.png"></image>
+    </view>
+    <view class="beishuPart_middle">
+      <text class="beishuPart_part_p1 middle_p">10</text>
+      <text class="beishuPart_part_p2 middle_p middle_p2">倍数</text>
+    </view>
+    <view class="beishuPart_right">
+      <text class="beishuPart_part_p1 middle_p">5GB</text>
+      <text class="beishuPart_part_p2 middle_p">获得的流量</text>
+    </view>
+  </view>
+  <button class="lingquBtn lingquBtn_yellow">立即领取</button>
+  <!--待激活-->
+  <view class="daijihuo_icon">
+    <image src="/image/daijihuo_icon.png"></image>
+  </view>
+</view>
+<!--更多好礼-->
+<view class="morePart">
+  <image src="/image/moreBg.jpg" mode="widthFix"></image>
+  <view class="moreImg">
+    <text class="moreImg_p1">2元</text>
+    <text class="moreImg_p2">话费券</text>
+  </view>
+  <view class="moreP">
+    <text>发起网龄pk赛后，好友应战，获胜者</text>
+    <text>获得2元话费，每月高达20元。</text>
+  </view>
+  <button class="lingquBtn lingquBtn_red">立即领取</button>
+</view>
+<!--底部连接-->
+<view class="bottom_hrefs">
+  <view class="rule_href">活动规则</view>
+  <view class="pk_href">我的pk战绩</view>
+</view>

@@ -1,0 +1,346 @@
+/* pages/netAge/getPrize/getPrize.wxss */
+
+page {
+  width: 100%;
+  position: relative;
+  background: #f5f5f5;
+}
+
+button::after {
+  border: none;
+  outline: none;
+}
+
+.headeImg {
+  width: 100%;
+}
+
+.header_p {
+  width: 100%;
+  margin-bottom: 34rpx;
+}
+
+.header_p text {
+  color: #975811;
+  font-size: 26rpx;
+  text-align: center;
+  display: block;
+  margin-bottom: 16rpx;
+}
+
+.netTime {
+  font-size: 26rpx;
+  color: #975811;
+  text-align: center;
+}
+
+.netTime text {
+  font-size: 30rpx;
+  color: #b43732;
+}
+
+.startJisuan {
+  background: linear-gradient(to right, #f3cd81, #ddb05f);
+  width: 600rpx;
+  margin: 49rpx auto 87rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+  text-align: center;
+  color: #975811;
+  font-size: 36rpx;
+  border: none;
+  border-radius: 60rpx;
+}
+
+.beishuImg {
+  width: 100%;
+}
+
+.beishuImg img {
+  width: 100%;
+}
+
+.jinduBlock {
+  width: 670rpx;
+  margin: 6rpx auto 0;
+  height: 26rpx;
+  background-color: #d15033;
+  border-radius: 30rpx;
+  position: relative;
+}
+
+.jindu_load {
+  position: absolute;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: #ffd9a5;
+  border-radius: 30rpx;
+}
+
+.jindu_load1 {
+  width: 10%;
+  display: none;
+}
+
+.jindu_load2 {
+  width: 31%;
+  display: none;
+}
+
+.jindu_load3 {
+  width: 51%;
+  display: none;
+}
+
+.jindu_load4 {
+  width: 72%;
+  display: none;
+}
+
+.jindu_load5 {
+  width: 100%;
+  display: none;
+}
+
+.circle {
+  position: absolute;
+  top: -10rpx;
+  width: 45rpx;
+  height: 45rpx;
+  border-radius: 50%;
+  background-color: #d8ddd9;
+}
+
+.circle_active {
+  background-color: #f6d785;
+}
+
+.circle view {
+  width: 33rpx;
+  height: 33rpx;
+  border-radius: 50%;
+  background-color: #b3b3b3;
+  margin-top: 6rpx;
+  margin-left: 6rpx;
+}
+
+.circle_active view {
+  background-color: #fdb33a;
+}
+
+.circle1 {
+  left: 6%;
+}
+
+.circle2 {
+  left: 26%;
+}
+
+.circle3 {
+  left: 47%;
+}
+
+.circle4 {
+  left: 68%;
+}
+
+.circle5 {
+  left: 88%;
+}
+
+.zaiwangTime {
+  color: #975811;
+  font-size: 30rpx;
+  text-align: center;
+  margin: 52rpx auto 34rpx;
+}
+
+.zaiwangTime view {
+  width: 99rpx;
+  height: 48rpx;
+  line-height: 48rpx;
+  background-color: #ffd9a5;
+  border-radius: 10rpx;
+  display: inline-block;
+  margin-left: 27rpx;
+  margin-right: 27rpx;
+}
+
+.jihuoBlock {
+  width: 100%;
+  position: relative;
+}
+
+.jihuoBlock image {
+  width: 100%;
+}
+
+.beishuPart {
+  position: absolute;
+  width: 92%;
+  height: 165rpx;
+  left: 4%;
+  top: 0;
+}
+
+.beishuPart_left {
+  width: 180rpx;
+  height: 165rpx;
+  float: left;
+  position: relative;
+}
+
+.beishuPart_part_p1 {
+  width: 100%;
+  color: #fde6b0;
+  font-size: 50rpx;
+  text-align: right;
+  margin-top: 20rpx;
+  display: block;
+  position: relative;
+}
+
+.fire_icon {
+  width: 42rpx !important;
+  height: 54rpx;
+  position: absolute;
+  top: 24rpx;
+  right: -48rpx;
+}
+
+.beishuPart_part_p2 {
+  width: 100%;
+  color: #fde6b0;
+  font-size: 34rpx;
+  text-align: right;
+  display: block;
+}
+
+.beishuPart_middle {
+  width: 120rpx;
+  height: 165rpx;
+  float: left;
+  margin-left: 100rpx;
+}
+
+.middle_p {
+  text-align: left !important;
+  margin-left: 10rpx;
+}
+
+.middle_p2 {
+  margin-left: 25rpx;
+}
+
+.beishuPart_right {
+  width: 220rpx;
+  height: 165rpx;
+  float: right;
+}
+
+.lingquBtn {
+  position: absolute;
+  width: 178rpx;
+  height: 66rpx;
+  line-height: 66rpx;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  text-align: center;
+}
+
+.lingquBtn_yellow {
+  background-color: #ffd9a5;
+  color: #b37035;
+  bottom: 53rpx;
+  right: 50rpx;
+}
+
+.lingquBtn_red {
+  background-color: #e62300;
+  color: #fff1bb;
+  bottom: 43rpx;
+  right: 50rpx;
+}
+
+.daijihuo_icon {
+  position: absolute;
+  bottom: 208rpx;
+  right: 20rpx;
+  width: 117rpx;
+  height: 117rpx;
+}
+
+.daijihuo_icon image {
+  width: 117rpx;
+  height: 117rpx;
+  display: inline-block;
+}
+
+.morePart {
+  width: 100%;
+  margin-top: 63rpx;
+  position: relative;
+}
+
+.morePart image {
+  width: 100%;
+}
+
+.moreImg {
+  width: 120rpx;
+  height: 150rpx;
+  position: absolute;
+  left: 92rpx;
+  top: 90rpx;
+}
+
+.moreImg_p1 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #ff3d3c;
+  font-size: 35rpx;
+  font-weight: bold;
+}
+
+.moreImg_p2 {
+  display: block;
+  width: 100%;
+  text-align: center;
+  color: #fde6b0;
+  font-size: 24rpx;
+  margin-top: 25rpx;
+}
+
+.moreP {
+  width: 430rpx;
+  position: absolute;
+  right: 76rpx;
+  top: 90rpx;
+}
+
+.moreP text {
+  color: #a6571c;
+  font-size: 26rpx;
+}
+
+.bottom_hrefs {
+  padding: 53rpx 0 52rpx;
+  overflow: hidden;
+  width: 100%;
+}
+
+.rule_href {
+  float: left;
+  margin-left: 55rpx;
+  color: #975811;
+  font-size: 26rpx;
+}
+
+.pk_href {
+  float: right;
+  margin-right: 63rpx;
+  color: #975811;
+  font-size: 26rpx;
+}
