@@ -122,13 +122,13 @@
 
 .modal-content{
   position: absolute;
-  left: 50%;
+  left: 45rpx;
   top: 330rpx;
   width: 660rpx;
   height: 830rpx;
-  margin-left: -330rpx;
   background-color: #fff;
   border-radius: 20rpx;
+  background-size: cover;
 }
 .close{
   width: 72rpx;
@@ -137,7 +137,14 @@
   right: 53rpx;
   top: 213rpx;
   background-size: cover;
-  z-index: 888
+  z-index: 888;
+}
+.appbutton{
+  position: absolute;
+  left: 80rpx;
+  top: 655rpx;
+  width: 500rpx;
+  height: 95rpx;
 }
 
 

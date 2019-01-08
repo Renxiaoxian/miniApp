@@ -1,9 +1,9 @@
 {
   "pages": [
+    "pages/netAge/ChallengeFail/ChallengeFail",
+    "pages/netAge/ChallengeSuccess/ChallengeSuccess",
     "pages/netAge/index/index",
-    "pages/netAge/ChallengeBook/ChallengeBook"
-   
-    
+    "pages/netAge/ChallengeBook/ChallengeBook"  
   ],
   "window": {
     "backgroundTextStyle": "light",

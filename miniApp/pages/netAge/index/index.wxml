@@ -20,8 +20,8 @@
   </view>
   <view class='mask' wx:if='{{show}}' bindtap='clickMask'>
     <view class='close' style='background-image:url({{localhost}}close.png);' bindtap='close'></view>
-    <view class='modal-content'>
-      1111
+    <view class='modal-content' style='background-image:url({{localhost}}tankuang.png);'>
+      <view class='appbutton' bindtap='goApp'></view>
     </view>
 </view>
 </view>
