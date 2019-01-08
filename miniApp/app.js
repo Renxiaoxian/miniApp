@@ -59,8 +59,7 @@ App({
   },
   globalData: {
     userInfo: null,
-    getImage: "http://39.96.56.53:8080/static/image/",
+    getImage: "/image/",
     getData: ""
   },
- 
 })

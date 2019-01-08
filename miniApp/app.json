@@ -4,6 +4,7 @@
     "pages/netAge/getPrize/getPrize",
     "pages/netAge/ChallengeBook/ChallengeBook",
     "pages/netAge/index/index"
+
   ],
   "window": {
     "backgroundTextStyle": "light",

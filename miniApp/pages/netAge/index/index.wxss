@@ -1,1 +1,143 @@
 /* pages/netAge/index/index.wxss */
+.show-background{
+  position: absolute;
+  width:100%;
+  min-height: 1668rpx;
+  max-height: 100%;
+  background-size:100%; 
+  background-color: #d63022;
+  background-repeat: no-repeat; 
+}
+.rule{
+  position: absolute;
+  left: 40rpx;
+  top: 490rpx;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #f7cd9c;
+}
+.activation{
+  position: absolute;
+  right: 40rpx;
+  top: 490rpx;
+  font-weight: 500;
+  font-size: 0.8rem;
+  color: #f7cd9c;
+}
+.pkBox{
+  position: absolute;
+  left: 15rpx;
+  top: 560rpx;
+  width: 724rpx;
+  height: 1015rpx;
+  background-size: cover;
+}
+ .recordList{
+  position: absolute;
+  left: 50rpx;
+  top: 125rpx;
+  width: 625rpx;
+  height: 800rpx;
+  overflow: auto;
+}
+.recordDate{
+  font-size: 0.7rem;
+  margin-bottom: 20rpx;
+  display: block;
+  color: #98475a;
+}
+.record{
+  position: relative;
+  margin-bottom: 20rpx;
+  width: 625rpx;
+  height: 125rpx;
+  background-size: cover;
+  line-height: 125rpx;
+}
+.vs{
+  width: 55rpx;
+  height: 75rpx;
+  text-align:center;
+  vertical-align:middle;
+  margin: auto 10rpx
+}
+.recipient{
+   display: inline;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color:#98475a;
+}
+.challenger{
+  display: inline;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color:#98475a;
+  margin-left: 68rpx;
+}
+.marker{
+  position: absolute;
+  top: 0;
+  left: 1rpx;
+  width: 55rpx;
+  height: 59rpx;
+  background-size: cover;
+}
+.state{
+  position: absolute;
+  top: 20rpx;
+  right: 20rpx;
+  width: 217rpx;
+  height: 84rpx;
+  background-size: cover;
+}
+.startPk{
+  position: absolute;
+  left: 50%;
+  top: 350rpx;
+  margin-left: -321.5rpx;
+  width: 643rpx;
+  height: 133rpx;
+  background-size: cover;
+}
+.footer{
+  margin: 25rpx auto 0;
+  text-align: center;
+  font-size: 0.7rem;
+  color: #98475a;
+}
+
+/* 弹框 */
+.mask{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+.modal-content{
+  position: absolute;
+  left: 50%;
+  top: 330rpx;
+  width: 660rpx;
+  height: 830rpx;
+  margin-left: -330rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.close{
+  width: 72rpx;
+  height: 72rpx;
+  position: absolute;
+  right: 53rpx;
+  top: 213rpx;
+  background-size: cover;
+  z-index: 888
+}
+
+

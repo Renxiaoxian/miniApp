@@ -1,2 +1,27 @@
 <!--pages/netAge/index/index.wxml-->
-<text>pages/netAge/index/index.wxml</text>
+<view class='show-background' style='background-image:url({{localhost}}background.png);'>
+  <view class='startPk' style='background-image:url({{localhost}}pk.png);' bindtap='startPk'></view>
+  <text bindtap='rule' class='rule'>活动规则</text>
+  <text bindtap='activation' class='activation'>去领券中心激活</text>
+  <view class='pkBox' style='background-image:url({{localhost}}pkBox.png);'>
+    <view class='recordList'>
+      <view wx:for="{{pkRecord}}">
+        <text class='recordDate'>{{item.date}}</text>
+      <view class='record' style='background-image:url({{localhost}}recordbackground.png);' wx:for="{{item.list}}" wx:for-item="listItem">
+          <view class='marker' style='background-image:url({{localhost}}success.png);' ></view>
+          <view class='challenger'>{{listItem.message}}</view>
+          <image class='vs' src='{{localhost}}vs.png'></image>
+          <view class='recipient'>{{listItem.message}}</view>
+          <view class='state' style='background-image:url({{localhost}}oneself.png);'  bindtap='receive'></view>
+      </view>
+      </view>
+      <view class='footer'>没有更多了</view>
+    </view>
+  </view>
+  <view class='mask' wx:if='{{show}}' bindtap='clickMask'>
+    <view class='close' style='background-image:url({{localhost}}close.png);' bindtap='close'></view>
+    <view class='modal-content'>
+      1111
+    </view>
+</view>
+</view>
