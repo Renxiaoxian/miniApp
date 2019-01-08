@@ -77,6 +77,9 @@ Page({
       show: false
     })
   },
+  goApp:function(){
+    console.log("去App");
+  },
   /**
    * 生命周期函数--监听页面显示
    */
