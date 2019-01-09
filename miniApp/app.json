@@ -1,11 +1,16 @@
 {
   "pages": [
+    "pages/netAge/ChallengeBook/ChallengeBook",
+    
+    "pages/netAge/index/index",
+    
+    "pages/netAge/netAgePK/netAgePK",
     
     "pages/netAge/getPrize/getPrize",
-    "pages/netAge/netAgePK/netAgePK",
-    "pages/netAge/ChallengeBook/ChallengeBook",
+    
+    
     "pages/netAge/ChallengeSuccess/ChallengeSuccess",
-    "pages/netAge/index/index"
+    "pages/netAge/webView/webView"
   ],
   "window": {
     "backgroundTextStyle": "light",

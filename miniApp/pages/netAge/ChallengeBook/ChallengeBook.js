@@ -16,6 +16,17 @@ Page({
   onLoad: function (options) {
     this.setData({
       localhost: app.globalData.getImage
+    }),
+    app.ajax({
+      reqUrl:'act1028e',
+      method:'initAcceptPK',
+      actCode:'1028',
+      param:'2D8165082DECAE8A60096E2CFC50F6AF',
+      mobile:'13933184430',
+      city:'311',
+      P1: "8CFDAEA99068AF40AAE42AABC73155E4"
+    }).then((res)=>{
+      console.log(res)
     })
   },
   

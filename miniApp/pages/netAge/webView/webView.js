@@ -1,4 +1,4 @@
-// pages/netAge/getPrize/getPrize.js
+// pages/netAge/index/index.js
 const app = getApp()
 Page({
 
@@ -6,24 +6,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    lqzxUrl:''
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.ajax({
-      reqUrl:'act1028e',
-      method:'getGift',
-      actCode:'1028',
-      param:'null',
-      mobile:'13472197474',
-      city:'0311'
-    }).then((res)=>{
-      console.log(res)
+    this.setData({
+      lqzxUrl:decodeURIComponent(options.lqzxUrl)
     })
-   
+    console.log(this.data.lqzxUrl)
   },
 
   /**
@@ -32,6 +24,7 @@ Page({
   onReady: function () {
 
   },
+  
 
   /**
    * 生命周期函数--监听页面显示

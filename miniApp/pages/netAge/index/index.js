@@ -7,7 +7,10 @@ Page({
    */
   data: {
     //是否显示modal
-    show: true,
+    show: false,
+    lqzxUrl:'',
+    phone:'',
+    phoneAES:'',
     pkRecord: [
       {
         date:'2019.01.03',
@@ -44,9 +47,21 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var that=this;
     this.setData({
       localhost: app.globalData.getImage
-    })
+    }),
+      app.ajax({
+        reqUrl: 'act1028e',
+        method: 'initPK',
+        actCode: '1028',
+        param: 'null',
+        mobile: '13933184430',
+        city: '0311'
+      }).then((res) => {
+        that.data.lqzxUrl = res.data.resultObj.lqzxUrl
+        console.log(res.data);
+      })
   },
 
   /**
@@ -61,7 +76,9 @@ Page({
   },
   // 去激活
   activation: function () {
-    console.log("去激活")
+    wx.navigateTo({
+      url: '/pages/netAge/webView/webView?lqzxUrl=' + encodeURIComponent(this.data.lqzxUrl)
+    })
   },
   //去PK
   startPk:function(){

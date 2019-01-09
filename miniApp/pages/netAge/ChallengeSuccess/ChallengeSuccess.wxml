@@ -1,5 +1,5 @@
 <!--pages/netAge/index/index.wxml-->
-<view class='show-background' style='background-image:url({{localhost}}ChallengeResults.png);'>
+<view class='show-background' wx:if='{{localhost}}' style='background-image:url({{localhost}}ChallengeResults.png);'>
   <view class='resultWord' style='background-image:url({{localhost}}victoryWord.png);'></view>
   <view class='details' style='background-image:url({{localhost}}detailsBox.png);'>
     <view class='resultIcon' style='background-image:url({{localhost}}victory.png);'></view>
@@ -27,4 +27,3 @@
     </view>
   </view>
 </view>
-
