@@ -23,7 +23,7 @@ Page({
     }).then((res)=>{
       console.log(res)
     })
-    wx.re
+   
   },
 
   /**

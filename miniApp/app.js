@@ -45,13 +45,10 @@ App({
         url: 'http://he.10086.cn/app/test/act/actAction.do',
         data: data,
         header: {
-          "Content-Type": "application/x-www-form-urlencoded"
+          'content-type': 'application/json'
         },
-        method: 'psot',
-        dataType: 'json',
-        responseType: 'text',
+        method: 'POST',
         success: function (res) {
-          console.log(res)
           resolve(res)
         },
         fail: function (res) { },
