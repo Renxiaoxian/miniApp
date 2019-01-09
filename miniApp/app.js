@@ -32,30 +32,34 @@ App({
         }
       }
     })
-    ajax:(data)=>{
-      wx.showModal({
+    
+  },
+  ajax: function(data) {
+    return new Promise((resolve, reject) => {
+      wx.showLoading({
         mask: true,
-        title: '数据加载中',
-        content: '',
+        icon: 'loading',
+        title: '加载中'
       })
-      return new Promise((resolve, reject) => {
-        wx.request({
-          url: '',
-          data: data,
-          header: {},
-          method: 'psot',
-          dataType: 'json',
-          responseType: 'text',
-          success: function (res) {
-            resolve(res)
-          },
-          fail: function (res) { },
-          complete: function (res) {
-            wx.hideLoading()
-          },
-        })
+      wx.request({
+        url: 'http://he.10086.cn/app/test/act/actAction.do',
+        data: data,
+        header: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        method: 'psot',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          console.log(res)
+          resolve(res)
+        },
+        fail: function (res) { },
+        complete: function (res) {
+          wx.hideLoading()
+        },
       })
-    }
+    })
   },
   globalData: {
     userInfo: null,

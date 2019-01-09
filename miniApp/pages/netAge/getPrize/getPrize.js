@@ -1,4 +1,5 @@
 // pages/netAge/getPrize/getPrize.js
+const app = getApp()
 Page({
 
   /**
@@ -12,7 +13,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    app.ajax({
+      reqUrl:'act1028e',
+      method:'initPage',
+      actCode:'1028',
+      param:'null',
+      mobile:'13472197474',
+      city:'0311'
+    }).then((res)=>{
+      console.log(res)
+    })
+    wx.re
   },
 
   /**
