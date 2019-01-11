@@ -82,3 +82,11 @@
   <view class="rule_href">活动规则</view>
   <view class="pk_href">我的pk战绩</view>
 </view>
+<view class="rule_tanchuang">
+  <view class="rule_tanchuang_mask"></view>
+  <view class="rule_tanchuang_block">
+     <view class="rule_tit">
+      <image src="/image/tishi_tit.png" mode="widthFix"></image>
+     </view>
+  </view>
+</view>
