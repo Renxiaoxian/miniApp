@@ -1,13 +1,12 @@
-
+// pages/netAge/index/index.js
 const app = getApp()
-
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-   pkRecord: [
+    pkRecord: [
       {
         date:'2019.01.03',
         list:[{
@@ -49,7 +48,6 @@ Page({
     this.setData({
       localhost: app.globalData.getImage
     })
-
   },
 
   /**

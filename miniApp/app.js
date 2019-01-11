@@ -47,7 +47,7 @@ App({
         header: {
           'content-type': 'application/json'
         },
-        method: 'POST',
+        method: 'GET',
         success: function (res) {
           resolve(res)
         },
