@@ -1,52 +1,23 @@
 <!--pages/netAge/netAgePK/netAgePK.wxml-->
 <view class="topImg">
-  <image src="/image/newTopImg.jpg" mode="widthFix"></image>
+  <image src="{{localhost}}newTopImg.jpg" mode="widthFix"></image>
   <view class="activityProduction">
     <text>“移”路同行 感恩有礼，点击查看您与中国移动</text>
     <text>的相知和陪伴岁月，领取您的专属礼品</text>
   </view>
-  <view class='NewnetTime'>入网时间：
-    <text>2018</text>年
-    <text>04</text>月
-    <text>01</text>日</view>
    <view class="jisuanBtn">
-     <image src="/image/JisuanBg.png"></image>
-     <view>计算我的礼品</view>
+     <image src="{{localhost}}JisuanBg.png"></image>
+     <button bindtap='getPrize'>计算我的礼品</button>
    </view>
 </view>
 <!--倍数部分-->
 <view class="newBeishu">
-   <image src="/image/newJihuoBg.jpg" mode="widthFix"></image>
-   <view class="jinduBlock_view">
-   <view class="jinduBlock">
-  <!--进度条-->
-  <view class="jindu_load jindu_load1"></view>
-  <view class="jindu_load jindu_load2"></view>
-  <view class="jindu_load jindu_load3"></view>
-  <view class="jindu_load jindu_load4"></view>
-  <view class="jindu_load jindu_load5"></view>
-  <!--圆圈-->
-  <view class="circle circle1 circle_active">
-    <view></view>
-  </view>
-  <view class="circle circle2 circle_active">
-    <view></view>
-  </view>
-  <view class="circle circle3">
-    <view></view>
-  </view>
-  <view class="circle circle4">
-    <view></view>
-  </view>
-  <view class="circle circle5">
-    <view></view>
-  </view>
-  </view>
-</view>
-<!--在网时间-->
-<view class="zaiwangTime">
-  在网时间
-  <view>268</view>月
+   <image src="{{localhost}}newJihuoBg.jpg" mode="widthFix"></image>
+    <view class="jinduBlock_view">
+    <view class="jinduBlock">
+      <view class='jindu_background'>
+      </view>
+    </view>
 </view>
 <!--激活-->
 <view class="jihuoBlock">
@@ -54,50 +25,74 @@
     <view class="beishuPart_left">
       <text class="beishuPart_part_p1">500M
       </text>
-      <text class="beishuPart_part_p2">流量</text>
-      <image class="fire_icon" src="/image/fire.png"></image>
+      <text class="beishuPart_part_p2">网龄礼品</text>
+      <image class="fire_icon" src="{{localhost}}fire.png"></image>
     </view>
     <view class="beishuPart_middle">
       <text class="beishuPart_part_p1 middle_p">10</text>
       <text class="beishuPart_part_p2 middle_p middle_p2">倍数</text>
     </view>
     <view class="beishuPart_right">
-      <text class="beishuPart_part_p1 middle_p">5GB</text>
-      <text class="beishuPart_part_p2 middle_p">获得的流量</text>
+      <text class="beishuPart_part_p1 middle_total">5GB</text>
     </view>
   </view>
   <button class="lingquBtn lingquBtn_yellow">立即领取</button>
   <!--待激活-->
   <view class="daijihuo_icon">
-    <image src="/image/daijihuo_icon.png"></image>
+    <image src="{{localhost}}daijihuo_icon.png"></image>
   </view>
 </view>
 </view>
     <!--pk部分-->
     <view class="pkPart">
-      <image src="/image/newPKbg.jpg" mode="widthFix"></image>
+      <image src="{{localhost}}newPKbg.jpg" mode="widthFix"></image>
       <view class="dedao">每月最高可得<text>20</text>元</view>
       <view class="challengeBtn">
-     <image src="/image/challenge_btn.png"></image>
-     <view>我要挑战</view>
+     <image src="{{localhost}}challenge_btn.png"></image>
+     <button open-type='share'>我要挑战</button>
    </view>
     </view>
 
    <!--底部链接-->
    <view class="bottom_hrefs">
-  <view class="rule_href">活动规则</view>
+  <view class="rule_href" bindtap='showrule'>活动规则</view>
   <view class="pk_href">我的pk战绩</view>
 </view>
 
   <!--弹窗-->
-<view class="rule_tanchuang">
-  <view class="rule_tanchuang_mask"></view>
+<view class="rule_tanchuang" hidden="{{ruleShow}}">
+  <view class="rule_tanchuang_mask">
+    
+  </view>
   <view class="rule_tanchuang_block">
+    <view bindtap='offRule' class='off-rule' style='background-image:url({{localhost}}rule_close.png);'></view>
      <view class="rule_tit">
-     <image src="/image/rule_tit.png" mode="widthFix"></image>
+      <image src="{{localhost}}rule_tit.png" mode="widthFix"></image>
      </view>
-     <view class="rule_table">
-        <image src="/image/rule_table.jpg" mode="widthFix"></image>
+     <view class="rule_table" bindtap='offRule'>
+        <image src="{{localhost}}rule_table.jpg" mode="widthFix"></image>
      </view>
+  </view>
+</view>
+<view class='getTel' hidden='getTel'>
+  <view class='show-popup'>
+    <view bindtap='offTel' class='off-rule' style='background-image:url({{localhost}}rule_close.png);'></view>
+    <image src='{{localhost}}tishi_tit.png' mode='widthFix'></image>
+    <view class='tel'>
+     <view> 获取到您的手机号为：<text>13333333333</text></view>
+      是否使用前手机号
+    </view>
+    <button class='useTel' >使用当前手机号</button>
+    <button class='cutTel'>换一个号码</button>
+  </view>
+</view>
+<view class='getTel' hidden='getPhone'>
+  <view class='show-popup'>
+    <view bindtap='offTel' class='off-rule' style='background-image:url({{localhost}}rule_close.png);'></view>
+    <image src='{{localhost}}tishi_tit.png' mode='widthFix'></image>
+    <input class='inputTel' type='number' placeholder='请输入河北移动手机号' placeholder-class='placeholder'></input>
+    <input class='senCode' type='number' placeholder='请输入短信验证码' placeholder-class='placeholder'></input>
+    <button class='getCode' >获取验证码</button>
+    <button class='login'>登录</button>
   </view>
 </view>

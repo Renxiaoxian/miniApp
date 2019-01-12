@@ -32,6 +32,7 @@ App({
         }
       }
     })
+<<<<<<< HEAD
     
   },
   ajax: function(data) {
@@ -55,6 +56,51 @@ App({
         complete: function (res) {
           wx.hideLoading()
         },
+=======
+   
+  },
+  ajax: (data) => {
+    wx.showloading({
+      mask: true,
+      title: '数据加载中',
+      content: '',
+    })
+    return new Promise((resolve, reject) => {
+      wx.request({
+        url: '',
+        data: data,
+        header: {},
+        method: 'psot',
+        dataType: 'json',
+        responseType: 'text',
+        success: function (res) {
+          resolve(res)
+        },
+        fail: function (res) { },
+        complete: function (res) {
+          wx.hideLoading()
+        },
+      })
+    })
+  },
+  getCode:()=>{
+    wx.showLoading({
+      title: '数据加载中',
+      mask:true,
+    })
+    return new Promise((resolve, reject) => {
+      wx.login({
+        success: function (res) {
+          wx.hideLoading()
+          resolve(res)
+          if (res.code) {
+            //发起网络请求
+            console.log(res)
+          } else {
+            console.log('登录失败！' + res.errMsg)
+          }
+        }
+>>>>>>> ren
       })
     })
   },
