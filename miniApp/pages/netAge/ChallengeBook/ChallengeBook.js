@@ -33,6 +33,7 @@ Page({
         friendTel:res.data.resultObj.phone1,
         myTel: res.data.resultObj.phone2
       })
+      
       console.log(res);
 
     })
@@ -62,14 +63,26 @@ Page({
       method: 'acceptPK',
       actCode: '1028',
       param: '2D8165082DECAE8A60096E2CFC50F6AF',
-      mobile: that.data.myTel,
+      mobile: "13933184430",
       city: '311',
-      p1: that.data.p1
+      p1: "8B1CA7C84FFBDF55D690BEEDC4050A42"
     }).then((res) => {
+      console.log(res)
       if (res.data.resultObj.state == 1) {
         console.log(res)
-        wx.navigateTo({
-          url: "/pages/netAge/ChallengeSuccess/ChallengeSuccess?pkid=" + res.data.resultObj.pkid
+        app.ajax({
+          reqUrl: 'act1028e',
+          method: 'acceptPK',
+          actCode: '1028',
+          param: '2D8165082DECAE8A60096E2CFC50F6AF',
+          mobile: res.data.resultObj.phone2,
+          city: '0311',
+          pkGiftId: options.pkid
+        }).then((result) => {
+          // wx.navigateTo({
+          //   url: "/pages/netAge/ChallengeSuccess/ChallengeSuccess?pkid=" + res.data.resultObj.pkid
+          // })
+          console.log(result)
         })
       } else {
         wx.showToast({

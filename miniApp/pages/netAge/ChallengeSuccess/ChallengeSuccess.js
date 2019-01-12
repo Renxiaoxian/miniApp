@@ -37,18 +37,7 @@ Page({
       localhost: app.globalData.getImage
     })
     var that = this;
-    app.ajax({
-      reqUrl: 'act1028e',
-      method: 'acceptPK',
-      actCode: '1028',
-      param: '2D8165082DECAE8A60096E2CFC50F6AF',
-      mobile: '13933184430',
-      city: '0311',
-      pkGiftId: options.pkid
-    }).then((res) => {
-      
-      console.log(res)
-    })
+    
   },
 
   /**

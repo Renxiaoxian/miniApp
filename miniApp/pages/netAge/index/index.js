@@ -1,7 +1,16 @@
 // pages/netAge/index/index.js
 const app = getApp()
 Page({
-
+  onShareAppMessage(res) {
+    if (res.from === 'button') {
+      // 来自页面内转发按钮
+      console.log(res.target)
+    }
+    return {
+      title: '自定义转发标题',
+      path: '/page/user?id=123'
+    }
+  },
   /**
    * 页面的初始数据
    */
@@ -11,22 +20,14 @@ Page({
     lqzxUrl:'',
     phone:'',
     phoneAES:'',
-    pkRecord: [
+    list: [
       {
-        date:'2019.01.03',
-        list:[{
-          message: 'foo',
-        }, {
-            message: 'bar'
-          }]
-      },
-      {
-        date: '2019.01.03',
-        list: [{
-          message: 'foo',
-        }, {
-          message: 'bar'
-        }]
+        'date':'2019.01.03',
+        'phone1':'我',
+        'phone2':'13777771117',
+        'state':'1',
+        'id':'1',
+        'result':'0'
       }
     ]
   },
@@ -48,6 +49,8 @@ Page({
    */
   onLoad: function (options) {
     var that=this;
+    // var myTel=options.phone;
+    var myTel ='13933184430';
     this.setData({
       localhost: app.globalData.getImage
     }),
@@ -59,8 +62,33 @@ Page({
         mobile: '13933184430',
         city: '0311'
       }).then((res) => {
+        console.log(res)
         that.data.lqzxUrl = res.data.resultObj.lqzxUrl
-        console.log(res.data);
+        var pkList = res.data.resultObj.list
+        var list = [];
+        for(var i in pkList){
+          var result='0' //0成功 1失败 2平手
+          if (pkList[i]['fLoser']==myTel){
+            result=1
+          } else if (pkList[i]['fWiner'] == myTel){
+            result = 0
+          }else{
+            result =2;
+          }
+          list.push({ 
+            'phone1': pkList[i]['fPlayer1'] == myTel ? '我' :pkList[i]['fPlayer1'],
+            'phone2': pkList[i]['fPlayer2'] == myTel ? '我' : pkList[i]['fPlayer2'],
+            'date': pkList[i]['fDay'].substring(0,4)
+              + '.' + pkList[i]['fDay'].substring(4, 6)
+              + '.' + pkList[i]['fDay'].substring(6, 8),
+            'state': pkList[i]['fState'],
+            'id': pkList[i]['fId'],
+            'result': result})
+        }
+        console.log(list)
+        that.setData({
+          list:list
+        })
       })
   },
 
@@ -80,10 +108,7 @@ Page({
       url: '/pages/netAge/webView/webView?lqzxUrl=' + encodeURIComponent(this.data.lqzxUrl)
     })
   },
-  //去PK
-  startPk:function(){
-    console.log("去PK")
-  },
+  
   //领取
   receive: function () {
     console.log("领取")
