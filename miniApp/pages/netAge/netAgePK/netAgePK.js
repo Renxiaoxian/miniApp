@@ -1,20 +1,40 @@
 // pages/netAge/netAgePK/netAgePK.js
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    ruleShow: true,
+    getPhone: true,
+    localhost:'http://39.96.56.53:8080/static/image/image/'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    this.setData({
+      localhost: app.globalData.getImage,
+      getTel: true
+    })
   },
-
+  showrule:function(){
+    this.setData({
+      ruleShow: false
+    })
+  },
+  offRule: function(){
+    this.setData({
+      ruleShow: true
+    })
+  },
+  getPrize(){
+    app.getCode().then((res)=>{
+      console.log(res)
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -61,6 +81,9 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '12312312321',
+      path: '/page/user?id=123'
+    }
   }
 })

@@ -51,23 +51,28 @@ page{
     width: 618rpx;
   height: 114rpx;
 }
-.jisuanBtn view{
+.jisuanBtn button{
   width: 100%;
-height: 114rpx;
-line-height: 114rpx;
-color: #975811;
-font-size: 36rpx;
- position: absolute;
+  height: 114rpx;
+  line-height: 114rpx;
+  color: #975811;
+  font-size: 36rpx;
+  position: absolute;
   left:0rpx;
   bottom:0rpx;
   text-align: center;
+  background: none;
+  outline: none
+}
+.jisuanBtn button::after{
+  border: none
 }
 .newBeishu{
   width: 100%;
   position: relative;
   font-size: 0;
 }
-.newBeishu image{
+.newBeishu>image{
   width: 100%;
 }
 .jinduBlock_view{
@@ -76,15 +81,40 @@ font-size: 36rpx;
   top:160rpx;
   left:0;
 }
+.middle_total{
+  text-align:left !important;
+  margin-left:10rpx;
+  font-size: 60rpx!important;
+  font-weight: 600;
+  font-family: 'Impact';
+  padding-top: 35rpx;
+
+}
 .jinduBlock {
-  width: 597rpx;
+  box-sizing: border-box;
+  width: 640rpx;
   margin: 6rpx auto 0;
-  height: 26rpx;
-  background-color: #d15033;
+  height: 45rpx;
+  background: none;
   border-radius: 30rpx;
   position: relative;
+  border: 4rpx #d15033 solid;
+  background: #fef6d9;
+  overflow: hidden;
 }
-
+.jinduBlock::after{
+  border: 4rpx #d15033 solid;
+}
+.jindu_background{
+  width: 20%;
+  background: #d15033;
+  height: 100%;
+  display: inline-block;
+}
+.jinduBlock image{
+  height: 100%;
+  display: inline-block;
+}
 .jindu_load {
   position: absolute;
   height: 100%;
@@ -326,7 +356,7 @@ font-size: 36rpx;
    width: 560rpx;
   height: 143rpx;
 }
-.challengeBtn view{
+.challengeBtn button{
   width: 100%;
 height: 143rpx;
 line-height: 143rpx;
@@ -336,6 +366,11 @@ font-size: 47rpx;
   left:0rpx;
   bottom:0rpx;
   text-align: center;
+  background: none;
+  border: none
+}
+.challengeBtn button::after{
+  border: none
 }
 .bottom_hrefs {
   padding: 31rpx 0 55rpx;
@@ -359,17 +394,18 @@ font-size: 47rpx;
 }
 
 .rule_tanchuang_mask{
-    z-index: 99;
+    z-index: 1;
     position: fixed;
     top:0;
     left:0;
     width:100%;
     height: 100%;
     background: rgba(0,0,0,0.6);
+
 }
 .rule_tanchuang_block{
-   z-index: 999;
- width: 686rpx;
+    z-index: 99;
+    width: 686rpx;
     position: fixed;
     top:113rpx;
     left:32rpx;
@@ -386,7 +422,116 @@ font-size: 47rpx;
 }
 .rule_table{
   width: 100%;
+  box-sizing: border-box;
+  padding: 0 20rpx 30rpx 20rpx;
 }
 .rule_table image{
+  width: 100;
+}
+.off-rule{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: -100rpx;
+  right: 0rpx;
+  background-size:100% 100%; 
+  z-index: 9
+
+}
+.getTel{
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5)
+  
+}
+.show-popup{
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 90%;
+  background: #fff;
+  padding: 0 60rpx 60rpx 60rpx;
+  border-radius: 20rpx;
+  text-align: center;
+}
+.show-popup image{
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+  top: -13rpx
+}
+.tel{
+  font-size: 26rpx;
+  color: #333333;
+  line-height: 50rpx;
+}
+.tel text{
+  color: #da1319
+}
+.useTel{
+  background: #da1319;
+  color: #fef5c6;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  margin-top: 40rpx;
+  width: 485rpx;
+  height: 75rpx;
+}
+.cutTel{
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  margin-top: 40rpx;
+  width: 485rpx;
+  height: 75rpx;
+  background: none;
+  border: 2rpx #da1319 solid;
+  color: #da1319;
+}
+.cutTel::after{
+  border: 2rpx #da1319 solid;
+}
+.inputTel{
+  box-sizing: border-box;
+  padding: 0 40 rpx;
+  font-size: 30rpx;
+  color:#cecece;
+  text-align: left;
+  border: 2rpx #c8c8c8 solid;
+  width: 560rpx;
+  margin: 40rpx auto;
+  height: 75rpx;
+}
+.placeholder{
+  color: #cecece;
+  padding: 0 20rpx;
+}
+.senCode{
+  box-sizing: border-box;
+  padding: 0 40 rpx;
+  font-size: 30rpx;
+  color:#cecece;
+  text-align: left;
+  float: left;
+  border: 2rpx #c8c8c8 solid;
+  width: 320rpx;
+  margin: 40rpx auto;
+  height: 75rpx;
+  margin-top: 0rpx;
+}
+.getCode{
+  font-size:  30rpx;
+  color: #fff;
+  background: #d15033;
+  width: 220rpx;
+  float: right;
+}
+.login{
+  background: #da1319;
+  width: 100%;
+  color: #fef5c6
 }
