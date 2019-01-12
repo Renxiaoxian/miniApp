@@ -6,8 +6,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    friendTel:13333333333,
-    myTel: 13812113211,
+    friendTel:'',
+    myTel: '',
+    p1:''
   },
 
   /**
@@ -15,8 +16,10 @@ Page({
    */
   onLoad: function (options) {
     this.setData({
-      localhost: app.globalData.getImage
-    }),
+      localhost: app.globalData.getImage,
+      p1:'8B1CA7C84FFBDF55D690BEEDC4050A42'
+    })
+    var that=this;
     app.ajax({
       reqUrl:'act1028e',
       method:'initAcceptPK',
@@ -24,9 +27,14 @@ Page({
       param:'2D8165082DECAE8A60096E2CFC50F6AF',
       mobile:'13933184430',
       city:'311',
-      P1: "8CFDAEA99068AF40AAE42AABC73155E4"
+      p1: that.data.p1
     }).then((res)=>{
-      console.log(res)
+      that.setData({
+        friendTel:res.data.resultObj.phone1,
+        myTel: res.data.resultObj.phone2
+      })
+      console.log(res);
+
     })
   },
   
@@ -48,13 +56,36 @@ Page({
    * 接受挑战
    */
   accep:function(){
-    console.log("接受挑战")
+    var that=this;
+    app.ajax({
+      reqUrl: 'act1028e',
+      method: 'acceptPK',
+      actCode: '1028',
+      param: '2D8165082DECAE8A60096E2CFC50F6AF',
+      mobile: that.data.myTel,
+      city: '311',
+      p1: that.data.p1
+    }).then((res) => {
+      if (res.data.resultObj.state == 1) {
+        console.log(res)
+        wx.navigateTo({
+          url: "/pages/netAge/ChallengeSuccess/ChallengeSuccess?pkid=" + res.data.resultObj.pkid
+        })
+      } else {
+        wx.showToast({
+          title: res.data.resultObj.msg,
+          icon: 'none',
+        })
+      }
+    })
   },
   /**
    * 领取礼品
    */
   getPrize:function(){
-    console.log("领取礼品")
+   wx:wx.navigateTo({
+     url: "/pages/netAge/netAgePK/netAgePK?phone=" + this.data.myTel
+   })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

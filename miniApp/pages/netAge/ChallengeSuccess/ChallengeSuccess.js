@@ -29,24 +29,25 @@ Page({
     originatorDuration: '12',
     recipientDuration: '18',
   },
-  clickMask() {
-    // this.setData({show: false})
-  },
-
-  cancel() {
-    this.setData({ show: false })
-    this.triggerEvent('cancel')
-  },
-  confirm() {
-    this.setData({ show: false })
-    this.triggerEvent('confirm')
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
     this.setData({
       localhost: app.globalData.getImage
+    })
+    var that = this;
+    app.ajax({
+      reqUrl: 'act1028e',
+      method: 'acceptPK',
+      actCode: '1028',
+      param: '2D8165082DECAE8A60096E2CFC50F6AF',
+      mobile: '13933184430',
+      city: '0311',
+      pkGiftId: options.pkid
+    }).then((res) => {
+      
+      console.log(res)
     })
   },
 

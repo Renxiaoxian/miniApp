@@ -6,7 +6,13 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    beginTimeDay:'',
+    beginTimeMonth: '',
+    beginTimeYear: '',
+    channel: '',
+    lqzxUrl: '',
+    phone:'',
+    phoneAES:''
   },
 
   /**
@@ -15,13 +21,13 @@ Page({
   onLoad: function (options) {
     app.ajax({
       reqUrl:'act1028e',
-      method:'getGift',
+      method:'initPage',
       actCode:'1028',
       param:'null',
       mobile:'13472197474',
       city:'0311'
     }).then((res)=>{
-      console.log(res)
+      console.log(res.data.resultObj)
     })
    
   },

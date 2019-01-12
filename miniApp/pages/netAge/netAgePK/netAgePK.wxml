@@ -6,9 +6,9 @@
     <text>的相知和陪伴岁月，领取您的专属礼品</text>
   </view>
   <view class='NewnetTime'>入网时间：
-    <text>2018</text>年
-    <text>04</text>月
-    <text>01</text>日</view>
+    <text>{{beginTimeYear}}</text>年
+    <text>{{beginTimeMonth}}</text>月
+    <text>{{beginTimeDay}}</text>日</view>
    <view class="jisuanBtn">
      <image src="/image/JisuanBg.png"></image>
      <view>计算我的礼品</view>
@@ -26,19 +26,34 @@
   <view class="jindu_load jindu_load4"></view>
   <view class="jindu_load jindu_load5"></view>
   <!--圆圈-->
-  <view class="circle circle1 circle_active">
+  <view class="circle circle1 circle_active "  wx:if="{{times >= 2}}">
     <view></view>
   </view>
-  <view class="circle circle2 circle_active">
+  <view class="circle circle1 "  wx:if="{{times < 2}}">
     <view></view>
   </view>
-  <view class="circle circle3">
+  <view class="circle circle2 circle_active" wx:if="{{times >= 6}}">
     <view></view>
   </view>
-  <view class="circle circle4">
+   <view class="circle circle2 "  wx:if="{{times < 6}}">
     <view></view>
   </view>
-  <view class="circle circle5">
+  <view class="circle circle3 circle_active" wx:if="{{times >= 10}}">
+    <view></view>
+  </view>
+   <view class="circle circle3 "  wx:if="{{times < 10}}">
+    <view></view>
+  </view>
+  <view class="circle circle4 circle_active" wx:if="{{times >= 16}}">
+    <view></view>
+  </view>
+   <view class="circle circle4 "  wx:if="{{times < 16}}">
+    <view></view>
+  </view>
+  <view class="circle circle5 circle_active" wx:if="{{times >= 20}}">
+    <view></view>
+  </view>
+   <view class="circle circle5 " wx:if="{{times < 20}}">
     <view></view>
   </view>
   </view>
@@ -52,17 +67,17 @@
 <view class="jihuoBlock">
   <view class="beishuPart">
     <view class="beishuPart_left">
-      <text class="beishuPart_part_p1">500M
+      <text class="beishuPart_part_p1">{{basic}}M
       </text>
       <text class="beishuPart_part_p2">流量</text>
       <image class="fire_icon" src="/image/fire.png"></image>
     </view>
     <view class="beishuPart_middle">
-      <text class="beishuPart_part_p1 middle_p">10</text>
+      <text class="beishuPart_part_p1 middle_p">{{times}}</text>
       <text class="beishuPart_part_p2 middle_p middle_p2">倍数</text>
     </view>
     <view class="beishuPart_right">
-      <text class="beishuPart_part_p1 middle_p">5GB</text>
+      <text class="beishuPart_part_p1 middle_p">{{total}}GB</text>
       <text class="beishuPart_part_p2 middle_p">获得的流量</text>
     </view>
   </view>
@@ -90,7 +105,7 @@
 </view>
 
   <!--弹窗-->
-<view class="rule_tanchuang">
+<!-- <view class="rule_tanchuang">
   <view class="rule_tanchuang_mask"></view>
   <view class="rule_tanchuang_block">
      <view class="rule_tit">
@@ -100,4 +115,4 @@
         <image src="/image/rule_table.jpg" mode="widthFix"></image>
      </view>
   </view>
-</view>
+</view> -->
