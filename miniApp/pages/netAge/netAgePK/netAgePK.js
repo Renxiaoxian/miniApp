@@ -1,4 +1,3 @@
-// pages/netAge/netAgePK/netAgePK.js
 const app = getApp()
 Page({
 
@@ -8,7 +7,7 @@ Page({
   data: {
     ruleShow: true,
     getPhone: true,
-    localhost:'http://39.96.56.53:8080/static/image/image/'
+    localhost: 'http://39.96.56.53:8080/static/image/image/'
   },
 
   /**
@@ -20,18 +19,18 @@ Page({
       getTel: true
     })
   },
-  showrule:function(){
+  showrule: function () {
     this.setData({
       ruleShow: false
     })
   },
-  offRule: function(){
+  offRule: function () {
     this.setData({
       ruleShow: true
     })
   },
-  getPrize(){
-    app.getCode().then((res)=>{
+  getPrize() {
+    app.getCode().then((res) => {
       console.log(res)
     })
   },

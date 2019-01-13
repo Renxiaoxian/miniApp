@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-=======
+
 // pages/netAge/getPrize/getPrize.js
 const app=getApp()
 Page({
@@ -69,4 +68,3 @@ Page({
 
   }
 })
->>>>>>> ren

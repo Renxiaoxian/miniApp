@@ -95,4 +95,4 @@
     <button class='getCode' >获取验证码</button>
     <button class='login'>登录</button>
   </view>
-</view>
+</view> 

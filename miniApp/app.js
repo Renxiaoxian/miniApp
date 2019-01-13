@@ -32,32 +32,6 @@ App({
         }
       }
     })
-<<<<<<< HEAD
-    
-  },
-  ajax: function(data) {
-    return new Promise((resolve, reject) => {
-      wx.showLoading({
-        mask: true,
-        icon: 'loading',
-        title: '加载中'
-      })
-      wx.request({
-        url: 'http://he.10086.cn/app/test/act/actAction.do',
-        data: data,
-        header: {
-          'content-type': 'application/json'
-        },
-        method: 'GET',
-        success: function (res) {
-          resolve(res)
-        },
-        fail: function (res) { },
-        complete: function (res) {
-          wx.hideLoading()
-        },
-=======
-   
   },
   ajax: (data) => {
     wx.showloading({
@@ -100,7 +74,7 @@ App({
             console.log('登录失败！' + res.errMsg)
           }
         }
->>>>>>> ren
+
       })
     })
   },
