@@ -7,7 +7,7 @@ Page({
    */
   data: {
     friendTel:'',
-    myTel: '',
+    myTel: '13933184430',
     p1:''
   },
 
@@ -18,7 +18,7 @@ Page({
     console.log(options)
     this.setData({
       localhost: app.globalData.getImage,
-      p1:'8B1CA7C84FFBDF55D690BEEDC4050A42'
+      p1: options.p1
     })
     var that=this;
     app.ajax({
@@ -26,7 +26,7 @@ Page({
       method:'initAcceptPK',
       actCode:'1028',
       param:'2D8165082DECAE8A60096E2CFC50F6AF',
-      mobile:'13933184430',
+      mobile:that.data.myTel,
       city:'311',
       p1: that.data.p1
     }).then((res)=>{
