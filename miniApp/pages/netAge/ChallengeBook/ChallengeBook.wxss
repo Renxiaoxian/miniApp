@@ -70,3 +70,113 @@
   background: none;
   border-radius: 45rpx;  
 }
+.off-rule{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: -100rpx;
+  right: 0rpx;
+  background-size:100% 100%; 
+  z-index: 9
+
+}
+.getTel{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 99;
+  
+}
+.show-popup{
+  box-sizing: border-box;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 90%;
+  background: #fff;
+  padding: 0 60rpx 60rpx 60rpx;
+  border-radius: 20rpx;
+  text-align: center;
+}
+.show-popup image{
+  width: 60%;
+  margin: 0 auto;
+  position: relative;
+  top: -13rpx
+}
+.tel{
+  font-size: 26rpx;
+  color: #333333;
+  line-height: 50rpx;
+}
+.tel text{
+  color: #da1319
+}
+.useTel{
+  background: #da1319;
+  color: #fef5c6;
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  margin-top: 40rpx;
+  width: 485rpx;
+  height: 75rpx;
+}
+.cutTel1{
+  border-radius: 30rpx;
+  font-size: 30rpx;
+  margin-top: 40rpx;
+  width: 485rpx;
+  height: 75rpx;
+  background: none;
+  border: 2rpx #da1319 solid;
+  color: #da1319;
+}
+.cutTel::after{
+  border: 2rpx #da1319 solid;
+}
+.inputTel{
+  box-sizing: border-box;
+  padding: 0 40 rpx;
+  font-size: 30rpx;
+  color:#cecece;
+  text-align: left;
+  border: 2rpx #c8c8c8 solid;
+  width: 560rpx;
+  margin: 40rpx auto;
+  height: 75rpx;
+  margin-top: 0
+}
+.placeholder{
+  color: #cecece;
+  padding: 0 20rpx;
+  margin-bottom:40rpx;
+}
+.senCode{
+  box-sizing: border-box;
+  padding: 0 40 rpx;
+  font-size: 30rpx;
+  color:#cecece;
+  text-align: left;
+  float: left;
+  border: 2rpx #c8c8c8 solid;
+  width: 320rpx;
+  margin: 40rpx auto;
+  height: 75rpx;
+  margin-top: 0rpx;
+}
+.getCode{
+  font-size:  30rpx;
+  color: #fff;
+  background: #d15033;
+  width: 220rpx;
+  float: right;
+}
+.login{
+  background: #da1319;
+  width: 100%;
+  color: #fef5c6
+}

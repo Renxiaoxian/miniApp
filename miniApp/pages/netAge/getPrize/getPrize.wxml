@@ -1,5 +1,5 @@
 <!--pages/netAge/getPrize/getPrize.wxml-->
-<image class='headeImg' src='{{localhost}}header-bai.jpg' mode="widthFix"></image>
+<image class='headeImg' src='/image/header-bai.jpg' mode="widthFix"></image>
 <view class="header_p">
   <text>“移”路同行 感恩有礼，点击查看您与中国移动的相知</text>
   <text>和陪伴岁月，领取您的专属礼品</text>
@@ -81,12 +81,4 @@
 <view class="bottom_hrefs">
   <view class="rule_href">活动规则</view>
   <view class="pk_href">我的pk战绩</view>
-</view>
-<view class="rule_tanchuang">
-  <view class="rule_tanchuang_mask"></view>
-  <view class="rule_tanchuang_block">
-     <view class="rule_tit">
-      <image src="/image/tishi_tit.png" mode="widthFix"></image>
-     </view>
-  </view>
 </view>

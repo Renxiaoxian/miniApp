@@ -1,7 +1,7 @@
 /* pages/netAge/netAgePK/netAgePK.wxss */
 page{
   /* background-color: #d63022;*/
-  background-color: #fff;
+  background-color: #d63022;
 }
 .topImg{
   width: 100%;
@@ -84,10 +84,10 @@ page{
 .middle_total{
   text-align:left !important;
   margin-left:10rpx;
-  font-size: 60rpx!important;
+  font-size: 40rpx!important;
   font-weight: 600;
   font-family: 'Impact';
-  padding-top: 35rpx;
+  padding-top: 50rpx;
 
 }
 .jinduBlock {
@@ -107,9 +107,34 @@ page{
 }
 .jindu_background{
   width: 20%;
-  background: #d15033;
   height: 100%;
   display: inline-block;
+  background-size: auto 100%;
+  background-position: right center;
+  border-radius: 60rpx;
+  position: relative;
+}
+.jindu_background::after{
+  content: '';
+  width: 25rpx;
+  height: 25rpx;
+  background: #fef6d9;
+  display: block;
+  position: absolute;
+  right: -10rpx;
+  top: -10rpx;
+  transform: rotate(45deg)
+}
+.jindu_background::before{
+  content: '';
+  width: 25rpx;
+  height: 25rpx;
+  background: #fef6d9;
+  display: block;
+  position: absolute;
+  right: -10rpx;
+  bottom: -10rpx;
+  transform: rotate(-45deg)
 }
 .jinduBlock image{
   height: 100%;
@@ -232,6 +257,8 @@ page{
   height: 165rpx;
   float: left;
   position: relative;
+  margin-left:20rpx;
+
 }
 
 .beishuPart_part_p1 {
@@ -242,15 +269,16 @@ page{
   margin-top: 20rpx;
   display: block;
   position: relative;
+  padding-right: 50rpx;
+  background-repeat: no-repeat;
+  background-position: right top;
+  background-size: 42rpx 54rpx;
+  white-space:nowrap;
+overflow:hidden;
+text-overflow:ellipsis;
+
 }
 
-.fire_icon {
-  width: 42rpx !important;
-  height: 54rpx;
-  position: absolute;
-  top: 22rpx;
-  right: -48rpx;
-}
 
 .beishuPart_part_p2 {
   width: 100%;
@@ -497,7 +525,6 @@ font-size: 47rpx;
 }
 .inputTel{
   box-sizing: border-box;
-  padding: 0 40 rpx;
   font-size: 30rpx;
   color:#cecece;
   text-align: left;
@@ -505,14 +532,13 @@ font-size: 47rpx;
   width: 560rpx;
   margin: 40rpx auto;
   height: 75rpx;
+  padding: 0 20rpx;
 }
 .placeholder{
   color: #cecece;
-  padding: 0 20rpx;
 }
 .senCode{
   box-sizing: border-box;
-  padding: 0 40 rpx;
   font-size: 30rpx;
   color:#cecece;
   text-align: left;
@@ -522,6 +548,7 @@ font-size: 47rpx;
   margin: 40rpx auto;
   height: 75rpx;
   margin-top: 0rpx;
+  padding: 0 20rpx;
 }
 .getCode{
   font-size:  30rpx;
@@ -534,4 +561,69 @@ font-size: 47rpx;
   background: #da1319;
   width: 100%;
   color: #fef5c6
+}
+.bannerShow{
+  width: 90%;
+  margin: 0 auto;
+  border-radius: 20rpx;
+  padding-bottom: 40rpx;
+}
+.bannerShow image{
+  width: 100%;
+  border-radius: 20rpx;
+}
+/* 弹框 */
+.mask{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+.modal-content{
+  position: absolute;
+  left: 45rpx;
+  top: 330rpx;
+  width: 660rpx;
+  height: 830rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  background-size: cover;
+}
+.close{
+  width: 72rpx;
+  height: 72rpx;
+  position: absolute;
+  right: 53rpx;
+  top: 213rpx;
+  background-size: cover;
+  z-index: 888;
+}
+.appbutton{
+  position: absolute;
+  left: 80rpx;
+  top: 655rpx;
+  width: 500rpx;
+  height: 95rpx;
+}
+.jinduwindth2{
+  width:50rpx
+}
+.jinduwindth6{
+  width:200rpx
+}
+.jinduwindth10{
+  width:320rpx
+}
+.jinduwindth16{
+  width:460rpx
+}
+.jinduwindth20{
+  width:100%;
 }

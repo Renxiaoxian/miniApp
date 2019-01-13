@@ -29,18 +29,6 @@ Page({
     originatorDuration: '12',
     recipientDuration: '18',
   },
-  clickMask() {
-    // this.setData({show: false})
-  },
-
-  cancel() {
-    this.setData({ show: false })
-    this.triggerEvent('cancel')
-  },
-  confirm() {
-    this.setData({ show: false })
-    this.triggerEvent('confirm')
-  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -48,6 +36,8 @@ Page({
     this.setData({
       localhost: app.globalData.getImage
     })
+    var that = this;
+    
   },
 
   /**

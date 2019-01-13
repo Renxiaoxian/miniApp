@@ -1,22 +1,36 @@
 
 // pages/netAge/getPrize/getPrize.js
-const app=getApp()
+const app = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    localhost:''
+    beginTimeDay:'',
+    beginTimeMonth: '',
+    beginTimeYear: '',
+    channel: '',
+    lqzxUrl: '',
+    phone:'',
+    phoneAES:''
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    this.setData({
-      localhost: app.globalData.getImage
+    app.ajax({
+      reqUrl:'act1028e',
+      method:'initPage',
+      actCode:'1028',
+      param:'null',
+      mobile:'13472197474',
+      city:'0311'
+    }).then((res)=>{
+      console.log(res.data.resultObj)
     })
+   
   },
 
   /**
@@ -68,3 +82,5 @@ Page({
 
   }
 })
+
+

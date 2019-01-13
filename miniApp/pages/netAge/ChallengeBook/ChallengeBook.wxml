@@ -9,3 +9,25 @@
   <button class='accep' bindtap='accep'></button>
   <button class='getPrize' bindtap='getPrize'></button>
 </view>
+<view class='getTel' hidden='getTel'>
+  <view class='show-popup'>
+    <view bindtap='offTel' class='off-rule' style='background-image:url({{localhost}}rule_close.png);'></view>
+    <image src='{{localhost}}tishi_tit.png' mode='widthFix'></image>
+    <view class='tel'>
+     <view> 获取到您的手机号为：<text>13333333333</text></view>
+      是否使用前手机号
+    </view>
+    <button class='useTel' >使用当前手机号</button>
+    <button class='cutTel1'>换一个号码</button>
+  </view>
+</view>
+<view class='getTel' hidden='{{getPhone}}'>
+  <view class='show-popup'>
+    <view bindtap='offTel' class='off-rule' style='background-image:url({{localhost}}rule_close.png);'></view>
+    <image src='{{localhost}}tishi_tit.png' mode='widthFix'></image>
+    <input class='inputTel' type='number' placeholder='请输入河北移动手机号' placeholder-class='placeholder' bindinput='getMyTel'></input>
+    <input class='senCode' type='number' placeholder='请输入短信验证码' placeholder-class='placeholder'></input>
+    <button class='getCode' bindtap='getCode'>获取验证码</button>
+    <button class='login'>登录</button>
+  </view>
+</view> 

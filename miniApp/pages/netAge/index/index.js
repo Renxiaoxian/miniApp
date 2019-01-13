@@ -1,7 +1,7 @@
 // pages/netAge/index/index.js
 const app = getApp()
 Page({
-
+  
   /**
    * 页面的初始数据
    */
@@ -11,22 +11,14 @@ Page({
     lqzxUrl:'',
     phone:'',
     phoneAES:'',
-    pkRecord: [
+    list: [
       {
-        date:'2019.01.03',
-        list:[{
-          message: 'foo',
-        }, {
-            message: 'bar'
-          }]
-      },
-      {
-        date: '2019.01.03',
-        list: [{
-          message: 'foo',
-        }, {
-          message: 'bar'
-        }]
+        'date':'2019.01.03',
+        'phone1':'我',
+        'phone2':'13777771117',
+        'state':'1',
+        'id':'1',
+        'result':'0'
       }
     ]
   },
@@ -47,7 +39,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    console.log(options)
     var that=this;
+    var myTel=options.phone;
+    // var myTel ='13933184430';
     this.setData({
       localhost: app.globalData.getImage
     }),
@@ -56,11 +51,38 @@ Page({
         method: 'initPK',
         actCode: '1028',
         param: 'null',
-        mobile: '13933184430',
+        mobile: myTel,
         city: '0311'
       }).then((res) => {
-        that.data.lqzxUrl = res.data.resultObj.lqzxUrl
-        console.log(res.data);
+        console.log(res)
+        var pkList = res.data.resultObj.list
+        var list = [];
+        for(var i in pkList){
+          var result='0' //0成功 1失败 2平手
+          if (pkList[i]['fLoser']==myTel){
+            result=1
+          } else if (pkList[i]['fWiner'] == myTel){
+            result = 0
+          }else{
+            result =2;
+          }
+          list.push({ 
+            'phone1': pkList[i]['fPlayer1'] == myTel ? '我' :pkList[i]['fPlayer1'],
+            'phone2': pkList[i]['fPlayer2'] == myTel ? '我' : pkList[i]['fPlayer2'],
+            'date': pkList[i]['fDay'].substring(0,4)
+              + '.' + pkList[i]['fDay'].substring(4, 6)
+              + '.' + pkList[i]['fDay'].substring(6, 8),
+            'state': pkList[i]['fState'],
+            'id': pkList[i]['fId'],
+            'result': result})
+        }
+        console.log(list)
+        that.setData({
+          list:list,
+          phoneAES: res.data.resultObj.phoneAES,
+          lqzxUrl : res.data.resultObj.lqzxUrl,
+          phone: res.data.resultObj.phone
+        })
       })
   },
 
@@ -80,10 +102,7 @@ Page({
       url: '/pages/netAge/webView/webView?lqzxUrl=' + encodeURIComponent(this.data.lqzxUrl)
     })
   },
-  //去PK
-  startPk:function(){
-    console.log("去PK")
-  },
+  
   //领取
   receive: function () {
     console.log("领取")
@@ -136,6 +155,10 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    return {
+      title: '挑战书',
+      path: '/pages/netAge/ChallengeBook/ChallengeBook?p1='+this.data.phoneAES
+    }
+   
   }
 })

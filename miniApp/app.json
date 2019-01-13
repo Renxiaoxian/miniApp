@@ -1,13 +1,19 @@
 {
   "pages": [
+    
     "pages/netAge/netAgePK/netAgePK",
+    "pages/netAge/ChallengeBook/ChallengeBook",
+    "pages/netAge/index/index",
+    
     "pages/netAge/getPrize/getPrize",
-    "pages/netAge/ChallengeBook/ChallengeBook"
+    "pages/netAge/ChallengeFail/ChallengeFail",
+    "pages/netAge/ChallengeSuccess/ChallengeSuccess",
+    "pages/netAge/webView/webView"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "和生活",
+    "navigationBarTitleText": "WeChat",
     "navigationBarTextStyle": "black"
   }
 }

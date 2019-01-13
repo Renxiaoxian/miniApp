@@ -344,33 +344,3 @@ button::after {
   color: #975811;
   font-size: 26rpx;
 }
-
-.rule_tanchuang_mask{
-    z-index: 99;
-    position: fixed;
-    top:0;
-    left:0;
-    width:100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-}
-.rule_tanchuang_block{
-    z-index: 999;
-    width: 686rpx;
-    position: fixed;
-    top:50%;
-    transform: translate(0,-50%);
-    left:32rpx;
-    background-color: #fff;
-    border-radius: 20rpx;
-    padding-bottom: 50px;
-}
-.rule_tit{
-  width: 346rpx;
-  margin: -12rpx auto 0;
-}
-.rule_tit image{
-  width: 346rpx;
-  height: 88rpx;
-}
-

@@ -32,21 +32,24 @@ App({
         }
       }
     })
+
+    
   },
-  ajax: (data) => {
-    wx.showloading({
-      mask: true,
-      title: '数据加载中',
-      content: '',
-    })
+  ajax: function(data) {
     return new Promise((resolve, reject) => {
+      wx.showLoading({
+        mask: true,
+        icon: 'loading',
+        title: '加载中'
+      })
       wx.request({
-        url: '',
+        //url: 'http://he.10086.cn/app/test/act/actAction.do',
+        url:'http://hb.tztec.com:10000/app/act/actAction.do',
         data: data,
-        header: {},
-        method: 'psot',
-        dataType: 'json',
-        responseType: 'text',
+        header: {
+          'content-type': 'application/x-www-form-urlencoded'
+        },
+        method: 'POST',
         success: function (res) {
           resolve(res)
         },
@@ -57,19 +60,19 @@ App({
       })
     })
   },
-  getCode:()=>{
+  getCode: () => {
     wx.showLoading({
       title: '数据加载中',
-      mask:true,
+      mask: true,
     })
     return new Promise((resolve, reject) => {
       wx.login({
         success: function (res) {
           wx.hideLoading()
+          console.log(res)
           resolve(res)
           if (res.code) {
             //发起网络请求
-            console.log(res)
           } else {
             console.log('登录失败！' + res.errMsg)
           }
@@ -81,6 +84,8 @@ App({
   globalData: {
     userInfo: null,
     getImage: "http://39.96.56.53:8080/static/image/image/",
-    getData: ""
+    // getImage: "/image/",
+    getData: "",
+    loginPhone:null
   },
 })

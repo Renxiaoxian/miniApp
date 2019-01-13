@@ -1,4 +1,16 @@
 /* pages/netAge/index/index.wxss */
+button::after{
+  border: none;
+  outline: none;
+}
+.button-hover{
+  background: none;
+}
+button{
+  border: none;
+  background: none;
+  outline: none;
+}
 .show-background{
   position: absolute;
   width:100%;
