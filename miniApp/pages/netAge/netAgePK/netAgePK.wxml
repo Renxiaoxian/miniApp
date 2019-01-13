@@ -23,17 +23,17 @@
 <view class="jihuoBlock">
   <view class="beishuPart">
     <view class="beishuPart_left">
-      <text class="beishuPart_part_p1">500M
+      <text class="beishuPart_part_p1">{{basic?basic:'--'}}
       </text>
       <text class="beishuPart_part_p2">网龄礼品</text>
       <image class="fire_icon" src="{{localhost}}fire.png"></image>
     </view>
     <view class="beishuPart_middle">
-      <text class="beishuPart_part_p1 middle_p">10</text>
+      <text class="beishuPart_part_p1 middle_p">{{times}}</text>
       <text class="beishuPart_part_p2 middle_p middle_p2">倍数</text>
     </view>
     <view class="beishuPart_right">
-      <text class="beishuPart_part_p1 middle_total">5GB</text>
+      <text class="beishuPart_part_p1 middle_total">{{total?total:'?'}}</text>
     </view>
   </view>
   <button class="lingquBtn lingquBtn_yellow">立即领取</button>
@@ -56,7 +56,7 @@
    <!--底部链接-->
    <view class="bottom_hrefs">
   <view class="rule_href" bindtap='showrule'>活动规则</view>
-  <view class="pk_href">我的pk战绩</view>
+  <view class="pk_href" bindtap='goPK'>我的pk战绩</view>
 </view>
 
   <!--弹窗-->

@@ -1,45 +1,110 @@
 // pages/netAge/netAgePK/netAgePK.js
-const app = getApp()
+var app=getApp();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    basic:'500',
+    total:'?',
+    circle_active:'circle_active',
+    beginTimeDay: '',
+    beginTimeMonth: '',
+    beginTimeYear: '',
+    channel: '',
+    lqzxUrl: '',
+    phone: '',
+    phoneAES: '',
+    times:'0',
+    myTel:"13472197474",
     ruleShow: true,
     getPhone: true,
-    localhost:'http://39.96.56.53:8080/static/image/image/'
+    localhost: 'http://39.96.56.53:8080/static/image/image/'
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    // if (options){
+    //   this.setData({
+    //     myTel: options.phone
+    //   })
+    // }
     this.setData({
       localhost: app.globalData.getImage,
       getTel: true
     })
+    var that = this;
+    app.ajax({
+      reqUrl: 'act1028e',
+      method: 'initPage',
+      actCode: '1028',
+      param: 'null',
+      mobile: that.data.myTel,
+      city: '0311'
+    }).then((res) => {
+      if (res.data.resultCode==1){
+        if (res.data.resultObj.state!=3){
+          var times = res.data.resultObj.times ? res.data.resultObj.times : 2;
+          var basic = times > 0 ?that.data.basic:null;
+          that.setData({
+            times: times,
+            // beginTimeDay: res.data.resultObj.beginTimeDay,
+            // beginTimeMonth: res.data.resultObj.beginTimeMonth,
+            // beginTimeYear: res.data.resultObj.beginTimeYear,
+            phone: res.data.resultObj.phone,
+            phoneAES: res.data.resultObj.phoneAES,
+            total: times * basic / 1000
+          })
+        }else{
+          wx.showToast({
+            title: res.data.resultObj.msg,
+            icon: 'none',
+          })
+          setTimeout(function(){
+            wx.navigateBack({
+              delta: 1
+            })
+          },2000)
+        }
+      }else{
+        wx.showToast({
+          title: res.data.resultMsg,
+          icon: 'none',
+        })
+      }
+      
+      console.log(res)
+    })
   },
-  showrule:function(){
+  showrule: function () {
     this.setData({
       ruleShow: false
     })
   },
-  offRule: function(){
+  offRule: function () {
     this.setData({
       ruleShow: true
     })
   },
-  getPrize(){
-    app.getCode().then((res)=>{
+  getPrize() {
+    app.getCode().then((res) => {
       console.log(res)
+    })
+  },
+  goPK(){
+    console.log('/pages/netAge/index/index?phone=' + this.data.myTel)
+    wx:wx.navigateTo({
+      url: '/pages/netAge/index/index?phone='+this.data.myTel
     })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    
   },
 
   /**
@@ -81,9 +146,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-    return {
-      title: '12312312321',
-      path: '/page/user?id=123'
-    }
+
   }
 })
