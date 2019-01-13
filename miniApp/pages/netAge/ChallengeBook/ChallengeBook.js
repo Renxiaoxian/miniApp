@@ -8,9 +8,8 @@ Page({
   data: {
     friendTel:'',
     myTel: '13933184430',
-    p1:'',
-    getPhone: false,
-    localhost: 'http://39.96.56.53:8080/static/image/image/'
+
+    p1:''
   },
 
   /**
@@ -20,8 +19,8 @@ Page({
     console.log(options)
     this.setData({
       localhost: app.globalData.getImage,
-      p1:'8B1CA7C84FFBDF55D690BEEDC4050A42'
-      // p1:options.p1
+
+      p1: options.p1
     })
     var that=this;
     app.ajax({
