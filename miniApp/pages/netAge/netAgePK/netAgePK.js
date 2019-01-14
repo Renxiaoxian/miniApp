@@ -16,7 +16,7 @@ Page({
     beginTimeYear: '',
     channel: '',
     lqzxUrl: '',
-    phone: '13472197474',
+    phone: '',
     phoneAES: '',
     times:'0',
     ruleShow: false,
@@ -46,9 +46,12 @@ Page({
     // }
     this.setData({
       localhost: app.globalData.getImage,
+      phone: app.globalData.loginPhone,
       getTel: false
     })
-   
+    if (app.globalData.loginPhone){
+      this.init();
+    }
   },
   showrule: function () {
     this.setData({
@@ -82,11 +85,19 @@ Page({
             getPhone:false
           })
           app.globalData.loginPhone = data.data.resultObj.phone;
-          this.init();
+          this[this.data.fn]
         }
         console.log(data)
       })
     })
+  },
+  usePhone(){
+    console.log(this.data.fn)
+    switch (this.data.fn){
+      case 'init':
+      this.init()
+      break;
+    }
   },
   inputcode(e){
     this.setData({
@@ -123,9 +134,6 @@ Page({
           var times = res.data.resultObj.times ? res.data.resultObj.times : 2;
           that.setData({
             times: times,
-            // beginTimeDay: res.data.resultObj.beginTimeDay,
-            // beginTimeMonth: res.data.resultObj.beginTimeMonth,
-            // beginTimeYear: res.data.resultObj.beginTimeYear,
             basic: res.data.resultObj.prize,
             phone: res.data.resultObj.phone,
             phoneAES: res.data.resultObj.phoneAES,
@@ -172,9 +180,10 @@ Page({
         if (data.data.resultObj.state == '1'){
           //保存过手机号
           this.setData({
-            //phone: data.data.resultObj.phone,
+            phone: data.data.resultObj.phone,
             getTel:true
           })
+          app.globalData.loginPhone = data.data.resultObj.phone
         }else{
           console.log(this.data.getPhone)
           this.setData({
@@ -251,6 +260,12 @@ Page({
 
     })
   },
+  getMylw(){
+    this.setData({
+      fn:"init"
+    })
+    this.getPrize()
+  },
   outTime: function () {
     var that = this
     setTimeout(function () {
@@ -322,7 +337,9 @@ Page({
    * 用户点击右上角分享
    */
   onShare(){
-    let that = this
+    this.setData({
+      fn:'share'
+    })
     if(app.globalData.loginPhone){
 
     }else{
@@ -331,18 +348,15 @@ Page({
       })
     }
   },
-  showInput(){
-    
-  },
   onShareAppMessage: function (ops) {
     console.log(ops)
     if (ops.from === 'button') {
       if (app.globalData.loginPhone) {
         return {
           title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
-          imageUrl: ``,
+          imageUrl: this.data.localhost + 'shareImage.jpg',
           desc: '',
-          path: `pages/index/index`, //点击分享的图片进到哪一个页面
+          path: `pages/netAge/ChallengeBook/ChallengeBook`, //点击分享的图片进到哪一个页面
           success: function (res) {
             // 转发成功
             console.log("转发成功:" + JSON.stringify(res));
@@ -362,9 +376,10 @@ Page({
       
     }else{
       return {
-        title: '河北移动',
-        desc: '网龄PK大赛',
-        path: `pages/netAge/netAgePK/netAgePK`, //点击分享的图片进到哪一个页面
+        title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
+        imageUrl:this.data.localhost+'shareImage.jpg',
+        desc: '',
+        path: `pages/netAge/ChallengeBook/ChallengeBook`,//点击分享的图片进到哪一个页面
         success: function (res) {
           // 转发成功
           console.log("转发成功:" + JSON.stringify(res));

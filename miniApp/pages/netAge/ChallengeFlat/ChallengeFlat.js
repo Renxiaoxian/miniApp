@@ -9,13 +9,13 @@ Page({
     lqzxUrl: '',
     phone: '',
     list: [
-
+  
     ],
     originatorTel: '12345678900',
     recipientTel: '11111111111',
     originatorDuration: '12',
     recipientDuration: '18',
-    status: 0
+    status:0
   },
   /**
    * 生命周期函数--监听页面加载
@@ -27,7 +27,7 @@ Page({
       localhost: app.globalData.getImage
     })
     var that = this;
-    var myTel = options.phone;
+    var myTel= options.phone;
     app.ajax({
       reqUrl: 'act1028e',
       method: 'initPK',
@@ -61,12 +61,17 @@ Page({
         })
       }
       console.log(res)
+      if (res.data.resultObj.pklb.fLoser==fPlayer1){
+        var originatorTel= fPlayer1
+      } else if (res.data.resultObj.pklb.fLoser == fPlayer1){
+
+      }
       var status = 0;
-      if (res.data.resultObj.pklb.fPlayer1 == res.data.resultObj.pklb.fWiner) {
-        status = 0
-      } else if (res.data.resultObj.pklb.fPlayer2 == res.data.resultObj.pklb.fWiner) {
+      if (res.data.resultObj.pklb.fPlayer1 == res.data.resultObj.pklb.fWiner){
+        status=0
+      } else if (res.data.resultObj.pklb.fPlayer2 == res.data.resultObj.pklb.fWiner){
         status = 1
-      } else {
+      }else{
         status = 2
       }
       that.setData({
@@ -78,7 +83,6 @@ Page({
         originatorDuration: res.data.resultObj.pklb.fTotalMonth1,
         recipientTel: res.data.resultObj.pklb.fPlayer2,
         recipientDuration: res.data.resultObj.pklb.fTotalMonth2,
-        status:status
       })
     })
   },

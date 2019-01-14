@@ -7,7 +7,7 @@
   </view>
    <view class="jisuanBtn">
      <image src="{{localhost}}JisuanBg.png"></image>
-     <button bindtap='getPrize'>计算我的礼品</button>
+     <button bindtap='getMylw'>计算我的礼品</button>
    </view>
 </view>
 <!--倍数部分 {{times}}-->
@@ -82,7 +82,7 @@
      <view> 获取到您的手机号为：<text>{{phone}}</text></view>
       是否使用前手机号
     </view>
-    <button class='useTel' bindtap='init'>使用当前手机号</button>
+    <button class='useTel' bindtap='usePhone'>使用当前手机号</button>
     <button class='cutTel' bindtap='cut'>换一个号码</button>
   </view>
 </view>
