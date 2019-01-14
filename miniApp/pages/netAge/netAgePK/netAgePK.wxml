@@ -23,7 +23,7 @@
 <view class="jihuoBlock">
   <view class="beishuPart">
     <view class="beishuPart_left">
-      <text class="beishuPart_part_p1" style='background-image:url({{localhost}}fire.png);'>{{basic?basic:'--'}}
+      <text class="beishuPart_part_p1" style='background-image:url({{localhost}}fire.png);text-align:right;'>{{basic?basic:'--'}}
       </text>
       <text class="beishuPart_part_p2">网龄礼品</text>
       
@@ -36,9 +36,9 @@
       <text class="beishuPart_part_p1 middle_total">{{total?total:'?'}}</text>
     </view>
   </view>
-  <button class="lingquBtn lingquBtn_yellow" style="{{msg =='未激活'?'':'background-color:#ccc'}}" bindtap='lingqv'>立即领取</button>
+  <button class="lingquBtn lingquBtn_yellow" style="{{state =='1'?'':'background-color:#ccc'}}" bindtap='lingqv'>立即激活</button>
   <!--待激活-->
-  <view class="daijihuo_icon" wx:if="{{msg =='未激活'}}">
+  <view class="daijihuo_icon" wx:if="{{state =='1'}}">
     <image src="{{localhost}}daijihuo_icon.png"></image>
   </view>
 </view>
@@ -98,9 +98,9 @@
   
 </view> 
 <view class='bannerShow'>
-    <image src='{{localhost}}bannnerSow.png' mode='widthFix'></image>
-  </view>
-  <view class='mask' wx:if='{{show}}' bindtap='clickMask'>
+  <image src='{{localhost}}bannnerSow.png' mode='widthFix'></image>
+</view>
+  <view class='mask' wx:if='{{show}}' bindtap='offTel'>
     <view class='close' style='background-image:url({{localhost}}close.png);' bindtap='close'></view>
     <view class='modal-content' style='background-image:url({{localhost}}tankuang.png);'>
       <view class='appbutton' bindtap='goApp'></view>

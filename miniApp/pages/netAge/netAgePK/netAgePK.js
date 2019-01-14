@@ -24,11 +24,18 @@ Page({
     localhost: 'http://39.96.56.53:8080/static/image/image/',
     code: '175188'
   },
-
+  lingqv(){
+    if (this.data.state =="1"){
+      this.setData({
+        show:true
+      })
+    }
+  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
     if (app.globalData.loginPhone){
       this.init();
     }
@@ -92,7 +99,13 @@ Page({
       offTel:false,
       show:false,
       ruleShow:false,
-      getTel:false
+      getTel:false,
+      show:false
+    })
+  },
+  goApp(){
+    wx.navigateTo({
+      url: '/pages/netAge/webView/webView?lqzxUrl=' + encodeURIComponent("https://www.he.10086.cn/app/ecu/resource/download/html/index.html")
     })
   },
   init(){
@@ -108,7 +121,6 @@ Page({
       if (res.data.resultCode == 1) {
         if (res.data.resultObj.state != 3) {
           var times = res.data.resultObj.times ? res.data.resultObj.times : 2;
-          var basic = times > 0 ? that.data.basic : null;
           that.setData({
             times: times,
             // beginTimeDay: res.data.resultObj.beginTimeDay,
@@ -118,7 +130,7 @@ Page({
             phone: res.data.resultObj.phone,
             phoneAES: res.data.resultObj.phoneAES,
             total: res.data.resultObj.totalprize,
-            msg: res.data.resultObj.msg,
+            state: res.data.resultObj.state,
             getTel:false
           })
         } else {
@@ -254,9 +266,15 @@ Page({
 
   },
   goPK(){
-    wx:wx.navigateTo({
-      url: '/pages/netAge/index/index?phone='+this.data.phone
-    })
+    if(app.globalData.loginPhone){
+      wx.navigateTo({
+        url: '/pages/netAge/index/index?phone='+this.data.phone
+      })
+    }else{
+      this.setData({
+        getPhone:true
+      })
+    }
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

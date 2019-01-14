@@ -82,9 +82,8 @@ page{
   left:0;
 }
 .middle_total{
-  text-align:left !important;
   margin-left:10rpx;
-  font-size: 40rpx!important;
+  font-size: 38rpx!important;
   font-weight: 600;
   font-family: 'Impact';
   padding-top: 50rpx;
@@ -106,7 +105,7 @@ page{
   border: 4rpx #d15033 solid;
 }
 .jindu_background{
-  width: 20%;
+  width: 0%;
   height: 100%;
   display: inline-block;
   background-size: auto 100%;
@@ -265,7 +264,6 @@ page{
   width: 100%;
   color: #fde6b0;
   font-size: 45rpx;
-  text-align: right;
   margin-top: 20rpx;
   display: block;
   position: relative;
@@ -273,10 +271,7 @@ page{
   background-repeat: no-repeat;
   background-position: right top;
   background-size: 42rpx 54rpx;
-  white-space:nowrap;
-overflow:hidden;
-text-overflow:ellipsis;
-
+  text-align: center;
 }
 
 
@@ -292,7 +287,7 @@ text-overflow:ellipsis;
   width: 120rpx;
   height: 165rpx;
   float: left;
-  margin-left: 100rpx;
+  margin-left: 80rpx;
 }
 
 .middle_p {
@@ -300,15 +295,10 @@ text-overflow:ellipsis;
   margin-left: 10rpx;
 }
 
-.middle_p2 {
-  margin-left: 25rpx;
-}
-
 .beishuPart_right {
   width: 220rpx;
   height: 165rpx;
-  float: right;
-  margin-right: 20rpx;
+  float: left;
 }
 
 .lingquBtn {
@@ -574,7 +564,7 @@ font-size: 47rpx;
 }
 /* 弹框 */
 .mask{
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   top: 0;
@@ -589,7 +579,7 @@ font-size: 47rpx;
 .modal-content{
   position: absolute;
   left: 45rpx;
-  top: 330rpx;
+  top: 250rpx;
   width: 660rpx;
   height: 830rpx;
   background-color: #fff;
@@ -601,7 +591,7 @@ font-size: 47rpx;
   height: 72rpx;
   position: absolute;
   right: 53rpx;
-  top: 213rpx;
+  top: 150rpx;
   background-size: cover;
   z-index: 888;
 }
