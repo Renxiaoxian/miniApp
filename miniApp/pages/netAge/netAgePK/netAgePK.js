@@ -22,7 +22,7 @@ Page({
     ruleShow: false,
     getPhone: false,
     localhost: 'http://39.96.56.53:8080/static/image/image/',
-    code: '175188'
+    code: '328257'
   },
   lingqv(){
     if (this.data.state =="1"){
@@ -82,21 +82,31 @@ Page({
             duration: 2000
           })
           this.setData({
-            getPhone:false
+            getPhone:false,
+            phoneAES: data.data.resultObj.phoneAES
           })
+          app.globalData.phoneAES = data.data.resultObj.phoneAES
           app.globalData.loginPhone = data.data.resultObj.phone;
-          this[this.data.fn]
+          this.openFn()
         }
         console.log(data)
       })
     })
   },
-  usePhone(){
+  openFn(){
     console.log(this.data.fn)
     switch (this.data.fn){
       case 'init':
       this.init()
       break;
+      case 'share':
+        this.onShareAppMessage({from:"button"});
+      break;
+      case 'gopk':
+        wx.navigateTo({
+          url: '/pages/netAge/index/index?phone=' + this.data.phone
+        })
+        break;
     }
   },
   inputcode(e){
@@ -141,6 +151,7 @@ Page({
             state: res.data.resultObj.state,
             getTel:false
           })
+          app.globalData.phoneAES = res.data.resultObj.phoneAES
         } else {
           wx.showToast({
             title:  res.data.resultObj.msg,
@@ -287,8 +298,9 @@ Page({
       })
     }else{
       this.setData({
-        getPhone:true
+        fn:'gopk'
       })
+      this.getPrize()
     }
   },
   /**
@@ -340,23 +352,16 @@ Page({
     this.setData({
       fn:'share'
     })
-    if(app.globalData.loginPhone){
-
-    }else{
-      that.setData({
-        getPhone:true
-      })
-    }
+    this.getPrize();
   },
   onShareAppMessage: function (ops) {
-    console.log(ops)
     if (ops.from === 'button') {
       if (app.globalData.loginPhone) {
         return {
           title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
           imageUrl: this.data.localhost + 'shareImage.jpg',
           desc: '',
-          path: `pages/netAge/ChallengeBook/ChallengeBook`, //点击分享的图片进到哪一个页面
+          path: 'pages/netAge/ChallengeBook/ChallengeBook?phone' + app.globalData.phoneAES, //点击分享的图片进到哪一个页面
           success: function (res) {
             // 转发成功
             console.log("转发成功:" + JSON.stringify(res));
@@ -377,16 +382,14 @@ Page({
     }else{
       return {
         title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
-        imageUrl:this.data.localhost+'shareImage.jpg',
+        imageUrl: this.data.localhost+'shareImage.jpg',
         desc: '',
-        path: `pages/netAge/ChallengeBook/ChallengeBook`,//点击分享的图片进到哪一个页面
+        path: 'pages/netAge/ChallengeBook/ChallengeBook?phone' + app.globalData.phoneAES, //点击分享的图片进到哪一个页面
         success: function (res) {
           // 转发成功
-          console.log("转发成功:" + JSON.stringify(res));
         },
         fail: function (res) {
           // 转发失败
-          console.log("转发失败:" + JSON.stringify(res));
         }
       }
     }

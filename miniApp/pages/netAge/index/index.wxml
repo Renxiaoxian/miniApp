@@ -1,26 +1,28 @@
 <!--pages/netAge/index/index.wxml-->
 <view class='show-background' wx:if="{{localhost}}" style='background-image:url({{localhost}}background.png);'>
   <button class='startPk' data-name="shareBtn" style='background-image:url({{localhost}}pk.png);' open-type="share" ></button>
-  <text bindtap='rule' class='rule'>活动规则</text>
+  <text bindtap='rule' class='rule' bindtap='showrule'>活动规则</text>
   <text bindtap='activation' class='activation'>去领券中心激活</text>
   <view class='pkBox' style='background-image:url({{localhost}}pkBox.png);'>
-    <view class='recordList'>
-      <view wx:for="{{list}}" wx:key="key">
-      <text class='recordDate' wx:if="{{item.date != list[index-1].date}}">{{item.date}}</text>          
-      <view class='record' wx:if="{{locadlhost}}" style='background-image:url({{locadlhost}}recordbackground.png);'>
-          <view class='marker' wx:if="{{item.result==0}}" style='background-image:url({{localhost}}success.png);' ></view>
-          <view class='marker' wx:elif="{{item.result==1}}" style='background-image:url({{localhost}}fail.png);' ></view>
-          <!-- <view class='marker' wx:else style='background-image:url({{localhost}}success.png);' ></view> -->
-          <view class='challenger'>{{item.phone1}}</view>
-          <image class='vs' src='{{localhost}}vs.png'></image>
-          <view class='recipient'>{{item.phone2}}</view>
-          <view class='state' wx:if="{{item.result==0}}" style='background-image:url({{localhost}}oneself.png);'  bindtap='receive'></view>
-          <view class='state' wx:if="{{item.result==1}}" style='background-image:url({{localhost}}other.png);' ></view>
-      </view>
-      </view>
-      <view class='footer'>没有更多了</view>
-    </view>
-  </view>
+<view class='recordList'>
+<view wx:for="{{list}}" wx:key="key">
+<text class='recordDate' wx:if="{{item.date != list[index-1].date}}">{{item.date}}</text> 
+<view class='record' style='background-image:url({{locadlhost}}recordbackground.png);'>
+  <view class='marker' wx:if="{{item.result == 0}}" style='background-image:url({{localhost}}success.png);' ></view>
+  <view class='marker' wx:elif="{{item.result == 1}}" style='background-image:url({{localhost}}fail.png);' ></view>
+  <view class='marker' wx:else style='background-image:url({{localhost}}falt1.png);' ></view>
+  <view class='challenger'>{{item.phone1}}</view>
+  <image class='vs' src='{{localhost}}vs.png'></image>
+  <view class='recipient'>{{item.phone2}}</view>
+  <view class='state' wx:if="{{item.result==0}}" style='background-image:url({{localhost}}oneself.png);' bindtap='receive'></view>
+  <view class='state' wx:if="{{item.result==1}}" style='background-image:url({{localhost}}other.png);' ></view>
+  <view class='state' wx:if="{{item.state==4}}" style='background-image:url({{localhost}}again.png);' ></view>
+  <view class='state' wx:if="{{item.state==3}}" style='background-image:url({{localhost}}limit.png);' ></view>
+</view>
+</view>
+<view class='footer'>没有更多了</view>
+</view>
+</view>
   <view class='mask' wx:if='{{show}}' bindtap='clickMask'>
     <view class='close' style='background-image:url({{localhost}}close.png);' bindtap='close'></view>
     <view class='modal-content' style='background-image:url({{localhost}}tankuang.png);'>
@@ -28,3 +30,23 @@
     </view>
   </view>
 </view>
+<view class="rule_tanchuang" wx:if="{{ruleShow}}">
+  <view class="rule_tanchuang_mask">
+    
+  </view>
+  <view class="rule_tanchuang_block">
+    <view bindtap='offRule' class='off-rule' bindtap='offTel' style='background-image:url({{localhost}}rule_close.png);'></view>
+     <view class="rule_tit">
+      <image src="{{localhost}}rule_tit.png" mode="widthFix"></image>
+     </view>
+     <view class="rule_table" bindtap='offRule'>
+        <image src="{{localhost}}rule_table.jpg" mode="widthFix"></image>
+     </view>
+  </view>
+</view>
+  <view class='mask' wx:if='{{show}}' bindtap='offTel'>
+    <view class='close' style='background-image:url({{localhost}}close.png);' bindtap='close'></view>
+    <view class='modal-content' style='background-image:url({{localhost}}tankuang.png);'>
+      <view class='appbutton' bindtap='goApp'></view>
+    </view>
+  </view>

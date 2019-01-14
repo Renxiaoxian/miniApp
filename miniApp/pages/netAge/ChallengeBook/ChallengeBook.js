@@ -18,7 +18,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       localhost: app.globalData.getImage,
-      p1: options.p1
+      p1: options.p1,
+      myTel: options.phone
     })
     if(app.globalData.loginPhone){
      this.init()  

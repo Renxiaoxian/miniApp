@@ -82,7 +82,7 @@
      <view> 获取到您的手机号为：<text>{{phone}}</text></view>
       是否使用前手机号
     </view>
-    <button class='useTel' bindtap='usePhone'>使用当前手机号</button>
+    <button class='useTel' open-type='{{fn}}' bindtap='openFn'>使用当前手机号</button>
     <button class='cutTel' bindtap='cut'>换一个号码</button>
   </view>
 </view>

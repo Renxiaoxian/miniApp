@@ -18,7 +18,7 @@
       <view class='record' style='background-image:url({{localhost}}recordbackground.png);'>
           <view class='marker' wx:if="{{item.result==0}}" style='background-image:url({{localhost}}success.png);' ></view>
           <view class='marker' wx:elif="{{item.result==1}}" style='background-image:url({{localhost}}fail.png);' ></view>
-          <view class='marker' wx:else style='background-image:url({{localhost}}falt.png);' ></view>
+          <view class='marker' wx:else style='background-image:url({{localhost}}falt1.png);' ></view>
           <view class='challenger'>{{item.phone1}}</view>
           <image class='vs' src='{{localhost}}vs.png'></image>
           <view class='recipient'>{{item.phone2}}</view>

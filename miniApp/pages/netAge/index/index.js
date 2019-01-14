@@ -9,6 +9,7 @@ Page({
     //是否显示modal
     show: false,
     lqzxUrl:'',
+    ruleShow:false,
     phone:'',
     phoneAES:'',
     list: [
@@ -21,6 +22,16 @@ Page({
         'result':'0'
       }
     ]
+  },
+  showrule: function () {
+    this.setData({
+      ruleShow: true
+    })
+  },
+  offTel: function () {
+    this.setData({
+      ruleShow: false
+    })
   },
   clickMask() {
     // this.setData({show: false})
@@ -42,7 +53,7 @@ Page({
     console.log(options)
     var that=this;
     var myTel=options.phone;
-    // var myTel ='13933184430';
+   // var myTel ='13933184430';
     this.setData({
       localhost: app.globalData.getImage
     }),
@@ -105,7 +116,9 @@ Page({
   
   //领取
   receive: function () {
-    console.log("领取")
+    this.setData({
+      show:true
+    })
   },
   //关闭
   close: function () {
@@ -113,8 +126,10 @@ Page({
       show: false
     })
   },
-  goApp:function(){
-    console.log("去App");
+  goApp() {
+    wx.navigateTo({
+      url: '/pages/netAge/webView/webView?lqzxUrl=' + encodeURIComponent("https://www.he.10086.cn/app/ecu/resource/download/html/index.html")
+    })
   },
   /**
    * 生命周期函数--监听页面显示
