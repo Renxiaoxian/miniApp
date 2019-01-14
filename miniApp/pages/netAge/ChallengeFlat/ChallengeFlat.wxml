@@ -1,13 +1,12 @@
 <!--pages/netAge/index/index.wxml-->
 <view class='show-background' wx:if='{{localhost}}' style='background-image:url({{localhost}}ChallengeResults.png);'>
-  <view class='resultWord' style='background-image:url({{localhost}}victoryWord.png);'></view>
+  <view class='resultWord' style='background-image:url({{localhost}}faltWord.png);'></view>
   <view class='details' style='background-image:url({{localhost}}detailsBox.png);'>
-    <view class='resultIcon' style='background-image:url({{localhost}}victory.png);'></view>
     <text class='originatorTel'>{{originatorTel}}</text>
     <text class='recipientTel'>{{recipientTel}}</text>
     <text class='originatorDuration'>{{originatorDuration}}个月</text>
     <text class='recipientDuration'>{{recipientDuration}}个月</text>
-    <view class='pkButton' bindtap='startPk'></view>
+    <button class='pkButton' open-type="share"></button> 
   </view>
   <text bindtap='rule' class='rule'>活动规则</text>
   <text bindtap='activation' class='activation'>去领券中心激活</text>
@@ -15,15 +14,18 @@
     <view class='recordList'>
       <view wx:for="{{list}}" wx:key="key">
       <text class='recordDate' wx:if="{{item.date != list[index-1].date}}">{{item.date}}</text>          
-      <view class='record' wx:if="{{locadlhost}}" style='background-image:url({{locadlhost}}recordbackground.png);'>
+      <view class='record' style='background-image:url({{localhost}}recordbackground.png);'>
           <view class='marker' wx:if="{{item.result==0}}" style='background-image:url({{localhost}}success.png);' ></view>
           <view class='marker' wx:elif="{{item.result==1}}" style='background-image:url({{localhost}}fail.png);' ></view>
-          <!-- <view class='marker' wx:else style='background-image:url({{localhost}}success.png);' ></view> -->
+          <view class='marker' wx:else style='background-image:url({{localhost}}falt.png);' ></view>
           <view class='challenger'>{{item.phone1}}</view>
           <image class='vs' src='{{localhost}}vs.png'></image>
           <view class='recipient'>{{item.phone2}}</view>
           <view class='state' wx:if="{{item.result==0}}" style='background-image:url({{localhost}}oneself.png);'  bindtap='receive'></view>
-          <view class='state' wx:if="{{item.result==1}}" style='background-image:url({{localhost}}other.png);' ></view>
+          <view class='state' wx:elif="{{item.result==1}}" style='background-image:url({{localhost}}other.png);' ></view>
+          <view class='state' wx:elif="{{item.state==3}}" style='background-image:url({{localhost}}limit.png);' ></view>
+
+          <view class='state' wx:else style='background-image:url({{localhost}}again.png);' ></view>
       </view>
       </view>
       <view class='footer'>没有更多了</view>

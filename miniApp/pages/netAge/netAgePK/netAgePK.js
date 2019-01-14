@@ -16,7 +16,7 @@ Page({
     beginTimeYear: '',
     channel: '',
     lqzxUrl: '',
-    phone: '13472197474',
+    phone: '',
     phoneAES: '',
     times:'0',
     ruleShow: false,
@@ -29,19 +29,14 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    this.setData({
+      localhost: app.globalData.getImage,
+      phone: app.globalData.loginPhone,
+      getTel: false
+    })
     if (app.globalData.loginPhone){
       this.init();
     }
-    // if (options){
-    //   this.setData({
-    //     myTel: options.phone
-    //   })
-    // }
-    this.setData({
-      localhost: app.globalData.getImage,
-      getTel: false
-    })
-   
   },
   showrule: function () {
     this.setData({
@@ -111,9 +106,6 @@ Page({
           var basic = times > 0 ? that.data.basic : null;
           that.setData({
             times: times,
-            // beginTimeDay: res.data.resultObj.beginTimeDay,
-            // beginTimeMonth: res.data.resultObj.beginTimeMonth,
-            // beginTimeYear: res.data.resultObj.beginTimeYear,
             basic: res.data.resultObj.prize,
             phone: res.data.resultObj.phone,
             phoneAES: res.data.resultObj.phoneAES,

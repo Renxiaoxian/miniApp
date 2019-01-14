@@ -2,7 +2,7 @@
 .show-background{
   position: absolute;
   width:100%;
-  min-height: 2148rpx;
+  min-height: 2358rpx;
   max-height: 100%;
   background-size:100%; 
   background-color: #d63022;
@@ -11,7 +11,7 @@
 .rule{
   position: absolute;
   left: 40rpx;
-  top: 980rpx;
+  top: 1180rpx;
   font-weight: 500;
   font-size: 0.8rem;
   color: #f7cd9c;
@@ -19,7 +19,7 @@
 .activation{
   position: absolute;
   right: 40rpx;
-  top: 980rpx;
+  top: 1180rpx;
   font-weight: 500;
   font-size: 0.8rem;
   color: #f7cd9c;
@@ -27,7 +27,7 @@
 .pkBox{
   position: absolute;
   left: 15rpx;
-  top: 1060rpx;
+  top: 1260rpx;
   width: 724rpx;
   height: 1015rpx;
   background-size: cover;
@@ -91,30 +91,22 @@
   background-size: cover;
 }
 .resultWord{
-  width: 546rpx;
-  height: 69rpx;
+  width: 273rpx;
+  height: 67rpx;
   background-size: cover;
   margin: 110rpx auto 0;
 }
 .details{
   position: relative;
   width: 718rpx;
-  height: 729rpx;
+  height: 928rpx;
   background-size: cover;
   margin: 45rpx auto 0;
 }
-.resultIcon1{
+.resultIcon{
   position: absolute;
   top: 66rpx;
   right: 66rpx;
-  width: 63rpx;
-  height: 69rpx;
-  background-size: cover;
-}
-.resultIcon2{
-  position: absolute;
-  top: 66rpx;
-  left: 66rpx;
   width: 63rpx;
   height: 69rpx;
   background-size: cover;

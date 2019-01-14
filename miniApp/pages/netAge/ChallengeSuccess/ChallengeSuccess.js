@@ -6,24 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pkRecord: [
-      {
-        date:'2019.01.03',
-        list:[{
-          message: 'foo',
-        }, {
-            message: 'bar'
-          }]
-      },
-      {
-        date: '2019.01.03',
-        list: [{
-          message: 'foo',
-        }, {
-          message: 'bar'
-        }]
-      }
-    ],
+    lqzxUrl: '',
+    phone: '',
+    phoneAES: '',
+    list: [],
     originatorTel:'12345678900',
     recipientTel: '11111111111', 
     originatorDuration: '12',

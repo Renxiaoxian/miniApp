@@ -6,22 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-    pkRecord: [
+    list: [
       {
-        date:'2019.01.03',
-        list:[{
-          message: 'foo',
-        }, {
-            message: 'bar'
-          }]
-      },
-      {
-        date: '2019.01.03',
-        list: [{
-          message: 'foo',
-        }, {
-          message: 'bar'
-        }]
+        'date': '2019.01.03',
+        'phone1': '我',
+        'phone2': '13777771117',
+        'state': '1',
+        'id': '1',
+        'result': '0'
       }
     ],
     originatorTel:'12345678900',

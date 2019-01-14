@@ -2,7 +2,7 @@
 <view class='show-background' wx:if='{{localhost}}' style='background-image:url({{localhost}}ChallengeResults.png);'>
   <view class='resultWord' style='background-image:url({{localhost}}failWord.png);'></view>
   <view class='details' style='background-image:url({{localhost}}detailsBoxFail.png);'>
-    <view class='resultIcon' style='background-image:url({{localhost}}fail.png);'></view>
+    <view class='{{status==0?resultIcon1:resultIcon2}}'  style='background-image:url({{localhost}}fail.png);'></view>
     <text class='originatorTel'>{{originatorTel}}</text>
     <text class='recipientTel'>{{recipientTel}}</text>
     <text class='originatorDuration'>{{originatorDuration}}个月</text>
