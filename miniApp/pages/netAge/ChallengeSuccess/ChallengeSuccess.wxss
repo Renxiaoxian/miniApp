@@ -103,7 +103,15 @@
   background-size: cover;
   margin: 45rpx auto 0;
 }
-.resultIcon{
+.resultIcon1{
+  position: absolute;
+  top: 66rpx;
+  left: 66rpx;
+  width: 63rpx;
+  height: 69rpx;
+  background-size: cover;
+}
+.resultIcon0{
   position: absolute;
   top: 66rpx;
   right: 66rpx;

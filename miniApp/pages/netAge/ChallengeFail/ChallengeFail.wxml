@@ -2,11 +2,13 @@
 <view class='show-background' wx:if='{{localhost}}' style='background-image:url({{localhost}}ChallengeResults.png);'>
   <view class='resultWord' style='background-image:url({{localhost}}failWord.png);'></view>
   <view class='details' style='background-image:url({{localhost}}detailsBoxFail.png);'>
-    <view class='{{status==0?resultIcon1:resultIcon2}}'  style='background-image:url({{localhost}}fail.png);'></view>
+   <view wx:if="{{status==0}}" class='resultIcon0' style='background-image:url({{localhost}}fail.png);'></view>
+    <view wx:else class='resultIcon0' style='background-image:url({{localhost}}fail.png);'></view>
     <text class='originatorTel'>{{originatorTel}}</text>
     <text class='recipientTel'>{{recipientTel}}</text>
     <text class='originatorDuration'>{{originatorDuration}}个月</text>
     <text class='recipientDuration'>{{recipientDuration}}个月</text>
+    <text class='duration'>{{recipientDuration}}个月</text>
     <view class='pkButton' bindtap='startPk'></view>
   </view>
   <text bindtap='rule' class='rule'>活动规则</text>

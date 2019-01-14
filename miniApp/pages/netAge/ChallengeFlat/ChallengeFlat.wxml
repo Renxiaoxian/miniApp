@@ -1,11 +1,12 @@
 <!--pages/netAge/index/index.wxml-->
 <view class='show-background' wx:if='{{localhost}}' style='background-image:url({{localhost}}ChallengeResults.png);'>
   <view class='resultWord' style='background-image:url({{localhost}}faltWord.png);'></view>
-  <view class='details' style='background-image:url({{localhost}}detailsBox.png);'>
+  <view class='details' style='background-image:url({{localhost}}detailsBoxFalt.png);'>
     <text class='originatorTel'>{{originatorTel}}</text>
     <text class='recipientTel'>{{recipientTel}}</text>
     <text class='originatorDuration'>{{originatorDuration}}个月</text>
     <text class='recipientDuration'>{{recipientDuration}}个月</text>
+    <text class='duration'>{{recipientDuration}}个月</text>
     <button class='pkButton' open-type="share"></button> 
   </view>
   <text bindtap='rule' class='rule'>活动规则</text>

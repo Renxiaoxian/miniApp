@@ -1,4 +1,16 @@
 /* pages/netAge/index/index.wxss */
+button::after{
+  border: none;
+  outline: none;
+}
+.button-hover{
+  background: none;
+}
+button{
+  border: none;
+  background: none;
+  outline: none;
+}
 .show-background{
   position: absolute;
   width:100%;
@@ -11,7 +23,7 @@
 .rule{
   position: absolute;
   left: 40rpx;
-  top: 1180rpx;
+  top: 980rpx;
   font-weight: 500;
   font-size: 0.8rem;
   color: #f7cd9c;
@@ -19,7 +31,7 @@
 .activation{
   position: absolute;
   right: 40rpx;
-  top: 1180rpx;
+  top: 980rpx;
   font-weight: 500;
   font-size: 0.8rem;
   color: #f7cd9c;
@@ -27,7 +39,7 @@
 .pkBox{
   position: absolute;
   left: 15rpx;
-  top: 1260rpx;
+  top: 1050rpx;
   width: 724rpx;
   height: 1015rpx;
   background-size: cover;
@@ -99,7 +111,7 @@
 .details{
   position: relative;
   width: 718rpx;
-  height: 928rpx;
+  height: 729rpx;
   background-size: cover;
   margin: 45rpx auto 0;
 }
@@ -141,10 +153,19 @@
 }
 .pkButton{
   position: absolute;
-  bottom: 60rpx;
+  bottom: 90rpx;
   right: 100rpx;
   width: 515rpx;
   height: 100rpx;
+}
+.duration{
+  position: absolute;
+  bottom: 179rpx;
+  left: 480rpx;
+  width: 515rpx;
+  height: 100rpx;
+  font-size: 0.8rem;
+  color: #98475a;
 }
 .footer{
   margin: 25rpx auto 0;
