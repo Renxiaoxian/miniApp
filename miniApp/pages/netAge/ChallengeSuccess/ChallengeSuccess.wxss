@@ -160,4 +160,88 @@
   font-size: 0.7rem;
   color: #98475a;
 }
+.rule_tanchuang_mask{
+    z-index: 1;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+
+}
+.rule_tanchuang_block{
+    z-index: 99;
+    width: 686rpx;
+    position: fixed;
+    top:113rpx;
+    left:32rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+}
+.rule_tit{
+  width: 346rpx;
+  margin: -12rpx auto 0;
+}
+.rule_tit image{
+  width: 346rpx;
+  height: 88rpx;
+}
+.rule_table{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 20rpx 30rpx 20rpx;
+}
+.rule_table image{
+  width: 100%;
+}
+.off-rule{
+  width: 80rpx;
+  height: 80rpx;
+  position: absolute;
+  top: -100rpx;
+  right: 0rpx;
+  background-size:100% 100%; 
+  z-index: 9
+}
+/* 弹框 */
+.mask{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0,0,0,0.6);
+  z-index: 9999;
+}
+
+.modal-content{
+  position: absolute;
+  left: 45rpx;
+  top: 330rpx;
+  width: 660rpx;
+  height: 830rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  background-size: cover;
+}
+.close{
+  width: 72rpx;
+  height: 72rpx;
+  position: absolute;
+  right: 53rpx;
+  top: 213rpx;
+  background-size: cover;
+  z-index: 888;
+}
+.appbutton{
+  position: absolute;
+  left: 80rpx;
+  top: 655rpx;
+  width: 500rpx;
+  height: 95rpx;
+}
 /* pages/netAge/ChallengeResults/ChallengeResults.wxss */

@@ -192,7 +192,7 @@ button{
   padding: 0 20rpx 30rpx 20rpx;
 }
 .rule_table image{
-  width: 100;
+  width: 100%;
 }
 .off-rule{
   width: 80rpx;

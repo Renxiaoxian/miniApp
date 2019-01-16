@@ -44,7 +44,7 @@ App({
       })
       wx.request({
         //url: 'http://he.10086.cn/app/test/act/actAction.do',
-        url:'http://hb.tztec.com:10000/app/act/actAction.do',
+        url:'https://www.he.10086.cn/app/act/actAction.do',
         data: data,
         header: {
           'content-type': 'application/x-www-form-urlencoded'
@@ -88,5 +88,5 @@ App({
     getData: "",
     loginPhone:null,
     phoneAES:null
-  },
+    }
 })

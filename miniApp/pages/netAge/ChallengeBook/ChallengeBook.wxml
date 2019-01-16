@@ -4,6 +4,7 @@
   <view class='friendTel'>
   {{friendTel}}
   </view>
+  <view class='hiddenBox' wx:if="{{hiddenBox}}"></view>
   <input class='myTel' type='text' bindinput='myTel' value='{{myTel}}'></input>
   <button class="cutTel">换一个号码</button>
   <button class='accep' bindtap='accep'></button>

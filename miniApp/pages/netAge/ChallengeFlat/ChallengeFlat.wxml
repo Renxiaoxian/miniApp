@@ -33,3 +33,23 @@
     </view>
   </view>
 </view>
+<view class="rule_tanchuang" wx:if="{{ruleShow}}">
+  <view class="rule_tanchuang_mask">
+    
+  </view>
+  <view class="rule_tanchuang_block">
+    <view bindtap='offRule' class='off-rule' bindtap='offTel' style='background-image:url({{localhost}}rule_close.png);'></view>
+     <view class="rule_tit">
+      <image src="{{localhost}}rule_tit.png" mode="widthFix"></image>
+     </view>
+     <view class="rule_table" bindtap='offRule'>
+        <image src="{{localhost}}rule_table.jpg" mode="widthFix"></image>
+     </view>
+  </view>
+</view>
+  <view class='mask' wx:if='{{show}}' bindtap='offTel'>
+    <view class='close' style='background-image:url({{localhost}}close.png);' bindtap='close'></view>
+    <view class='modal-content' style='background-image:url({{localhost}}tankuang.png);'>
+      <view class='appbutton' bindtap='goApp'></view>
+    </view>
+  </view>

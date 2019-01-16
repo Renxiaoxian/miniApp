@@ -36,9 +36,9 @@ Page({
    */
   onLoad: function (options) {
 
-    if (app.globalData.loginPhone){
-      this.init();
-    }
+    // if (app.globalData.loginPhone){
+    //   this.init();
+    // }
     // if (options){
     //   this.setData({
     //     myTel: options.phone
@@ -60,6 +60,7 @@ Page({
   },
   login(){
     app.getCode().then((res)=>{
+      console.log(1111)
       //reqUrl=act1028e&method=checkMsg&actCode=1028&mobile=13472197474&js_code=023sxEVi2G3EqC0JJTXi29TNVi2sxEV0&verification=670642
       app.ajax({
         reqUrl:'act1028e',
@@ -69,6 +70,7 @@ Page({
         js_code:res.code,
         verification:this.data.code
       }).then((data)=>{
+        console.log(data)
         if (data.data.resultObj.state == '0'){
           wx.showToast({
             title: data.data.resultObj.msg,
@@ -89,7 +91,7 @@ Page({
           app.globalData.loginPhone = data.data.resultObj.phone;
           this.openFn()
         }
-        console.log(data)
+        
       })
     })
   },
@@ -110,6 +112,7 @@ Page({
     }
   },
   inputcode(e){
+    console.log(e)
     this.setData({
       code:e.detail.value
     })
@@ -188,7 +191,7 @@ Page({
         actCode: '1028',
         js_code:res.code
       }).then((data) => {
-        if (data.data.resultObj.state == '1'){
+        if (data.data.success && data.data.resultObj.state == '1'){
           //保存过手机号
           this.setData({
             phone: data.data.resultObj.phone,

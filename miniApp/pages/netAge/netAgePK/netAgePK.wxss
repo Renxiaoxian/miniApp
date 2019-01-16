@@ -442,9 +442,10 @@ font-size: 47rpx;
   width: 100%;
   box-sizing: border-box;
   padding: 0 20rpx 30rpx 20rpx;
+  overflow: auto
 }
 .rule_table image{
-  width: 100;
+  width: 100%;
 }
 .off-rule{
   width: 80rpx;

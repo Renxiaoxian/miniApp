@@ -50,3 +50,4 @@
       <view class='appbutton' bindtap='goApp'></view>
     </view>
   </view>
+  

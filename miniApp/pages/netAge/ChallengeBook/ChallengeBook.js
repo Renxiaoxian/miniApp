@@ -7,9 +7,11 @@ Page({
    */
   data: {
     friendTel:'',
-    myTel: '13933184430',
+    myTel: '',
     p1:'',
-    getPhone:true
+    getPhone:true,
+    hiddenBox:false,
+    code:''
   },
 
   /**
@@ -19,13 +21,14 @@ Page({
     this.setData({
       localhost: app.globalData.getImage,
       p1: options.p1,
-      myTel: options.phone
+      myTel: app.globalData.loginPhone
     })
     if(app.globalData.loginPhone){
      this.init()  
     }else{
       this.setData({
-        getPhone: false
+        getPhone: false,
+        hiddenBox:true
       })
     }
   },
@@ -72,8 +75,10 @@ Page({
             duration: 2000
           })
           this.setData({
-            getPhone: false
+            getPhone: false,
+            hiddenBox: false
           })
+          app.globalData.phoneAES = data.data.resultObj.phoneAES;
           app.globalData.loginPhone = data.data.resultObj.phone;
           this.init();
         }
@@ -199,7 +204,7 @@ Page({
         param: '2D8165082DECAE8A60096E2CFC50F6AF',
         mobile: that.data.myTel,
         city: '311',
-        p1: "8B1CA7C84FFBDF55D690BEEDC4050A42"
+        p1: that.data.p1
       }).then((res) => {
         console.log(res);
         if (res.data.resultCode == 1) {
@@ -297,6 +302,6 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-
+    
   }
 })

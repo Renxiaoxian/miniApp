@@ -192,3 +192,12 @@ button{
   width: 100%;
   color: #fef5c6
 }
+.hiddenBox{
+  position: absolute;
+  top: 735rpx;
+  left: 104rpx;
+  height: 152rpx;
+  width: 540rpx;
+  background: #faf7e5;
+  z-index: 99
+}

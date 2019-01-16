@@ -169,10 +169,44 @@ Page({
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-    return {
-      title: '挑战书',
-      path: '/pages/netAge/ChallengeBook/ChallengeBook?p1='+this.data.phoneAES
+  onShareAppMessage: function (ops) {
+    if (ops.from === 'button') {
+      if (app.globalData.loginPhone) {
+        return {
+          title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
+          imageUrl: this.data.localhost + 'shareImage.jpg',
+          desc: '',
+          path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + app.globalData.phoneAES, //点击分享的图片进到哪一个页面
+          success: function (res) {
+            // 转发成功
+            console.log("转发成功:" + JSON.stringify(res));
+          },
+          fail: function (res) {
+            // 转发失败
+            console.log("转发失败:" + JSON.stringify(res));
+          }
+        }
+      } else {
+        this.setData({
+          getPhone: false
+        })
+        return false
+      }
+      // 来自页面内转发按钮
+
+    } else {
+      return {
+        title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
+        imageUrl: this.data.localhost + 'shareImage.jpg',
+        desc: '',
+        path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + app.globalData.phoneAES, //点击分享的图片进到哪一个页面
+        success: function (res) {
+          // 转发成功
+        },
+        fail: function (res) {
+          // 转发失败
+        }
+      }
     }
    
   }

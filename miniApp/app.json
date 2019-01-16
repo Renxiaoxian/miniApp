@@ -1,10 +1,12 @@
 {
   "pages": [
     
+    
     "pages/netAge/netAgePK/netAgePK",
     "pages/netAge/index/index",
-    "pages/netAge/ChallengeBook/ChallengeBook",
     "pages/netAge/getPrize/getPrize",
+    "pages/netAge/ChallengeBook/ChallengeBook",
+    "pages/netAge/ChallengeFlat/ChallengeFlat",
     "pages/netAge/ChallengeFail/ChallengeFail",
     "pages/netAge/ChallengeSuccess/ChallengeSuccess",
     "pages/netAge/webView/webView"
