@@ -355,10 +355,17 @@ Page({
     this.setData({
       fn:'share'
     })
-    this.getPrize();
+    if(app.globalData.loginPhone){
+      this.onShareAppMessage({from:"button"})
+    }else{
+      this.getPrize()
+    }
+    this.openFn();
   },
   onShareAppMessage: function (ops) {
     if (ops.from === 'button') {
+      console.log(".......................")
+      console.log(app.globalData.loginPhone)
       if (app.globalData.loginPhone) {
         return {
           title: '人人有新年礼，PK再赢话费，快来挑战我吧！',

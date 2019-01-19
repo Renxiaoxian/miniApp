@@ -49,7 +49,7 @@
       <view class="dedao">每月最高可得<text>20</text>元</view>
       <view class="challengeBtn">
      <image src="{{localhost}}challenge_btn.png"></image>
-     <button open-type='{{phone?"Share":""}}' bindtap='onShare'>我要挑战</button>
+     <button open-type='{{phone?"share":""}}' bindtap='onShare'>我要挑战</button>
    </view>
     </view>
 
