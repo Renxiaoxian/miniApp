@@ -22,7 +22,7 @@ Page({
     ruleShow: false,
     getPhone: false,
     localhost: 'http://39.96.56.53:8080/static/image/image/',
-    code: '328257'
+    code: ''
   },
   lingqv(){
     if (this.data.state =="1"){
@@ -67,7 +67,7 @@ Page({
         method:'checkMsg',
         actCode:'1028',
         mobile:this.data.phone,
-        js_code:res.code,
+        openid:res.code,
         verification:this.data.code
       }).then((data)=>{
         console.log(data)
@@ -189,9 +189,9 @@ Page({
         reqUrl: 'act1028e',
         method: 'doLogin',
         actCode: '1028',
-        js_code:res.code
+        openid:res.code
       }).then((data) => {
-        if (data.data.success && data.data.resultObj.state == '1'){
+        if (data.data.resultObj && data.data.resultObj.state == '1'){
           //保存过手机号
           this.setData({
             phone: data.data.resultObj.phone,

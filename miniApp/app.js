@@ -43,8 +43,10 @@ App({
         title: '加载中'
       })
       wx.request({
+       //  url: 'http://hb.tztec.com:10000/app/act/actAction.do',
         //url: 'http://he.10086.cn/app/test/act/actAction.do',
-        url:'https://www.he.10086.cn/app/act/actAction.do',
+        //url:'https://www.he.10086.cn/app/act/actAction.do',
+        url:'http://he.10086.cn/app/test/act/actAction.do',
         data: data,
         header: {
           'content-type': 'application/x-www-form-urlencoded'
@@ -70,8 +72,20 @@ App({
         success: function (res) {
           wx.hideLoading()
           console.log(res)
-          resolve(res)
+          
           if (res.code) {
+            wx.request({
+              url: 'https://api.weixin.qq.com/sns/jscode2session?appid=wxbd327bf89f59a42c&secret=6a07777352da7638d1ae6da537dd7849&js_code='+res.code+'&grant_type=authorization_code',
+              data: {},
+              header: {
+                'content-type': 'application/x-www-form-urlencoded'
+              },
+              method: 'GET',
+              success:(data)=>{
+                resolve({ code: data.data.openid})
+              },
+            })
+            
             //发起网络请求
           } else {
             console.log('登录失败！' + res.errMsg)
