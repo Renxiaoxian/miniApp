@@ -102,7 +102,8 @@ Page({
       this.init()
       break;
       case 'share':
-        this.onShareAppMessage({from:"button"});
+        this.init()
+        
       break;
       case 'gopk':
         wx.navigateTo({
@@ -155,6 +156,9 @@ Page({
             getTel:false
           })
           app.globalData.phoneAES = res.data.resultObj.phoneAES
+          if(this.data.fn == "share"){
+            this.onShareAppMessage({ from: "button" });
+          }
         } else {
           wx.showToast({
             title:  res.data.resultObj.msg,
@@ -365,13 +369,14 @@ Page({
   onShareAppMessage: function (ops) {
     if (ops.from === 'button') {
       console.log(".......................")
-      console.log(app.globalData.loginPhone)
+      
       if (app.globalData.loginPhone) {
+        console.log(this.data.phoneAES)
         return {
           title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
           imageUrl: this.data.localhost + 'shareImage.jpg',
           desc: '',
-          path: 'pages/netAge/ChallengeBook/ChallengeBook?phone' + app.globalData.phoneAES, //点击分享的图片进到哪一个页面
+          path: 'pages/netAge/ChallengeBook/ChallengeBook?phone=' + this.data.phoneAES, //点击分享的图片进到哪一个页面
           success: function (res) {
             // 转发成功
             console.log("转发成功:" + JSON.stringify(res));
@@ -394,7 +399,7 @@ Page({
         title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
         imageUrl: this.data.localhost+'shareImage.jpg',
         desc: '',
-        path: 'pages/netAge/ChallengeBook/ChallengeBook?phone' + app.globalData.phoneAES, //点击分享的图片进到哪一个页面
+        path: 'pages/netAge/ChallengeBook/ChallengeBook?phone=' + this.data.phoneAES,  //点击分享的图片进到哪一个页面
         success: function (res) {
           // 转发成功
         },
