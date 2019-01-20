@@ -7,7 +7,9 @@
   </view>
    <view class="jisuanBtn">
      <image src="{{localhost}}JisuanBg.png"></image>
-     <button bindtap='getMylw'>计算我的礼品</button>
+     <button  disabled wx:if="{{priceDisabled}}">计算我的礼品</button>
+     <button  bindtap='getMylw'  wx:else >计算我的礼品</button>
+
    </view>
 </view>
 <!--倍数部分 {{times}}-->

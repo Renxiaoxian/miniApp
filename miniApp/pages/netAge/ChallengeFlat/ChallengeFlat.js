@@ -12,10 +12,10 @@ Page({
     list: [
   
     ],
-    originatorTel: '12345678900',
-    recipientTel: '11111111111',
-    originatorDuration: '12',
-    recipientDuration: '18',
+    originatorTel: '',
+    recipientTel: '',
+    originatorDuration: '',
+    recipientDuration: '',
     status: 0,
     show: false
   },

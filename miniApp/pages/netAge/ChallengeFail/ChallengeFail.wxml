@@ -15,19 +15,20 @@
   <text bindtap='activation' class='activation'>去领券中心激活</text>
   <view class='pkBox' style='background-image:url({{localhost}}pkBox.png);'>
     <view class='recordList'>
-      <view wx:for="{{pkRecord}}" wx:key="key">
-        <text class='recordDate'>{{item.date}}</text>
-      <view class='record' style='background-image:url({{localhost}}recordbackground.png);' wx:for="{{item.list}}" wx:for-item="listItem" wx:key="key">
+      <view wx:for="{{list}}" wx:key="key">
+      <text class='recordDate' wx:if="{{item.date != list[index-1].date}}">{{item.date}}</text>          
+      <view class='record' style='background-image:url({{localhost}}recordbackground.png);'>
           <view class='marker' wx:if="{{item.result==0}}" style='background-image:url({{localhost}}success.png);' ></view>
           <view class='marker' wx:elif="{{item.result==1}}" style='background-image:url({{localhost}}fail.png);' ></view>
           <view class='marker' wx:else style='background-image:url({{localhost}}falt1.png);' ></view>
-          <view class='challenger'>{{listItem.message}}</view>
+          <view class='challenger'>{{item.phone1}}</view>
           <image class='vs' src='{{localhost}}vs.png'></image>
-          <view class='recipient'>{{listItem.message}}</view>
+          <view class='recipient'>{{item.phone2}}</view>
           <view class='state' wx:if="{{item.result==0}}" style='background-image:url({{localhost}}oneself.png);'  bindtap='receive'></view>
-          <view class='state' wx:if="{{item.result==1}}" style='background-image:url({{localhost}}other.png);' ></view>
-          <view class='state' wx:if="{{item.state==4}}" style='background-image:url({{localhost}}again.png);' ></view>
-          <view class='state' wx:if="{{item.state==3}}" style='background-image:url({{localhost}}limit.png);' ></view>
+          <view class='state' wx:elif="{{item.result==1}}" style='background-image:url({{localhost}}other.png);' ></view>
+          <view class='state' wx:elif="{{item.state==3}}" style='background-image:url({{localhost}}limit.png);' ></view>
+
+          <view class='state' wx:else style='background-image:url({{localhost}}again.png);' ></view>
       </view>
       </view>
       <view class='footer'>没有更多了</view>

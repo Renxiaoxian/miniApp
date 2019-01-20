@@ -22,7 +22,8 @@ Page({
     ruleShow: false,
     getPhone: false,
     localhost: 'http://39.96.56.53:8080/static/image/image/',
-    code: ''
+    code: '',
+    priceDisabled:true
   },
   lingqv(){
     if (this.data.state =="1"){
@@ -51,6 +52,10 @@ Page({
     })
     if (app.globalData.loginPhone){
       this.init();
+    }else{
+      this.setData({
+        priceDisabled:false
+      })
     }
   },
   showrule: function () {
@@ -85,9 +90,9 @@ Page({
           })
           this.setData({
             getPhone:false,
-            phoneAES: data.data.resultObj.phoneAES
+            priceDisabled:true
           })
-          app.globalData.phoneAES = data.data.resultObj.phoneAES
+          // app.globalData.phoneAES = data.data.resultObj.phoneAES
           app.globalData.loginPhone = data.data.resultObj.phone;
           this.openFn()
         }
@@ -103,7 +108,6 @@ Page({
       break;
       case 'share':
         this.init()
-        
       break;
       case 'gopk':
         wx.navigateTo({
@@ -134,6 +138,7 @@ Page({
     })
   },
   init(){
+    console.log('333')
     var that = this;
     app.ajax({
       reqUrl: 'act1028e',
@@ -153,7 +158,8 @@ Page({
             phoneAES: res.data.resultObj.phoneAES,
             total: res.data.resultObj.totalprize,
             state: res.data.resultObj.state,
-            getTel:false
+            getTel:false,
+            priceDisabled:true
           })
           app.globalData.phoneAES = res.data.resultObj.phoneAES
           if(this.data.fn == "share"){
@@ -183,8 +189,10 @@ Page({
     })
   },
   getPrize(type) {
+    console.log('getPrize')
     //判断是否存储过手机号
     if (app.globalData.loginPhone){
+      console.log(app.globalData.loginPhone)
       this.init();
       return false;
     }
@@ -195,6 +203,7 @@ Page({
         actCode: '1028',
         openid:res.code
       }).then((data) => {
+        console.log(data)
         if (data.data.resultObj && data.data.resultObj.state == '1'){
           //保存过手机号
           this.setData({
@@ -203,11 +212,12 @@ Page({
           })
           app.globalData.loginPhone = data.data.resultObj.phone
         }else{
-          console.log(this.data.getPhone)
+
           this.setData({
-            getPhone: true
+            getPhone: true,
+            priceDisabled:true
           })
-          console.log(this.data.getPhone)
+
         }
         
       })
@@ -265,7 +275,7 @@ Page({
         this.outTime()
       }else{
         wx.showToast({
-          title:'123',
+          title:'发送失败',
           icon: 'none',
           duration: 2000
         })
@@ -279,10 +289,11 @@ Page({
     })
   },
   getMylw(){
+    this.init();
     this.setData({
       fn:"init"
     })
-    this.getPrize()
+    
   },
   outTime: function () {
     var that = this
@@ -356,27 +367,32 @@ Page({
    * 用户点击右上角分享
    */
   onShare(){
+    console.log(2222)
     this.setData({
-      fn:'share'
+      fn:'init'
     })
     if(app.globalData.loginPhone){
       this.onShareAppMessage({from:"button"})
     }else{
       this.getPrize()
+
     }
-    this.openFn();
+    // this.openFn();
+   
   },
   onShareAppMessage: function (ops) {
+    console.log(ops);
     if (ops.from === 'button') {
       console.log(".......................")
       
       if (app.globalData.loginPhone) {
         console.log(this.data.phoneAES)
+        var phoneAES = this.data.phoneAES;
         return {
           title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
           imageUrl: this.data.localhost + 'shareImage.jpg',
           desc: '',
-          path: 'pages/netAge/ChallengeBook/ChallengeBook?phone=' + this.data.phoneAES, //点击分享的图片进到哪一个页面
+          path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + phoneAES, //点击分享的图片进到哪一个页面
           success: function (res) {
             // 转发成功
             console.log("转发成功:" + JSON.stringify(res));
@@ -399,7 +415,7 @@ Page({
         title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
         imageUrl: this.data.localhost+'shareImage.jpg',
         desc: '',
-        path: 'pages/netAge/ChallengeBook/ChallengeBook?phone=' + this.data.phoneAES,  //点击分享的图片进到哪一个页面
+        path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + this.data.phoneAES,  //点击分享的图片进到哪一个页面
         success: function (res) {
           // 转发成功
         },

@@ -62,7 +62,8 @@ page{
   bottom:0rpx;
   text-align: center;
   background: none;
-  outline: none
+  outline: none;
+  border-radius: 114rpx
 }
 .jisuanBtn button::after{
   border: none

@@ -100,7 +100,8 @@ App({
     getImage: "http://39.96.56.53:8080/static/image/image/",
     // getImage: "/image/",
     getData: "",
-    loginPhone:null,
+    // loginPhone:'13472197474',
+    loginPhone: null,
     phoneAES:null
     }
 })

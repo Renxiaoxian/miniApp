@@ -11,7 +11,9 @@ Page({
     p1:'',
     getPhone:true,
     hiddenBox:false,
-    code:''
+    code:'',
+    time:0,
+    getTel:true
   },
 
   /**
@@ -21,14 +23,14 @@ Page({
     this.setData({
       localhost: app.globalData.getImage,
       p1: options.p1,
+      // p1:'8B1CA7C84FFBDF55D690BEEDC4050A42',
       myTel: app.globalData.loginPhone
     })
-    if(app.globalData.loginPhone){
-     this.init()  
-    }else{
+    this.init()
+    if(!app.globalData.loginPhone){
       this.setData({
-        getPhone: false,
-        hiddenBox:true
+        // getPhone: false,
+        hiddenBox: true
       })
     }
   },
@@ -59,37 +61,39 @@ Page({
         method: 'checkMsg',
         actCode: '1028',
         mobile: this.data.myTel,
-        js_code: res.code,
+        openid: res.code,
         verification: this.data.code
       }).then((data) => {
-        if (data.data.resultObj.state == '0') {
-          wx.showToast({
-            title: data.data.resultObj.msg,
-            icon: none,
-            duration: 2000
-          })
-        } else {
+        console.log(data)
+        if (data.data.resultObj.state == '1') {
           wx.showToast({
             title: '登录成功',
             icon: 'success',
             duration: 2000
           })
           this.setData({
-            getPhone: false,
-            hiddenBox: false
+            getPhone: true,
+            hiddenBox: false,
+            myTel: data.data.resultObj.phone2
           })
-          app.globalData.phoneAES = data.data.resultObj.phoneAES;
-          app.globalData.loginPhone = data.data.resultObj.phone;
+          app.globalData.loginPhone = data.data.resultObj.phone2;
           this.init();
+        } else {
+          wx.showToast({
+            title: data.data.resultObj.msg,
+            icon: 'none',
+            duration: 2000
+          })
         }
         console.log(data)
       })
     })
   },
-  inputcode(e) {
+  inputCode(e) {
     this.setData({
       code: e.detail.value
     })
+    console.log(this.data.code)
   },
   /**
    * 输入我的号码
@@ -105,19 +109,22 @@ Page({
       // offTel: false,
       // show: false,
       // ruleShow: false,
-      // getTel: false
+      getTel: true
     })
   },
-  /**
-   * 换个号码
-   */
-  cutTel:function(){
-    
+  cut() {
+    this.setData({
+      getPhone: false,
+      getTel: true
+    })
   },
   /**
    * 获取验证码
    */
   getCode: function (){
+    if (this.data.time > 0) {
+      return false;
+    }
     var phone=this.data.myTel;
     console.log(phone)
     if (!(/^\d{11}$/.test(phone))) {
@@ -142,17 +149,31 @@ Page({
       method: 'sendMsg',
       actCode: '1028',
       param: '2D8165082DECAE8A60096E2CFC50F6AF',
-      phone: that.data.myTel,
+      mobile: that.data.myTel,
       city: '311',
-      p1: that.data.p1
     }).then((res) => {
       // that.setData({
       //   friendTel: res.data.resultObj.phone1,
       //   myTel: res.data.resultObj.phone2
       // })
-
+      if (res.data.success) {
+        wx.showToast({
+          title: '发送成功',
+          icon: 'success',
+          duration: 2000
+        })
+        this.setData({
+          time: 60
+        })
+        this.outTime()
+      } else {
+        wx.showToast({
+          title: '发送失败',
+          icon: 'none',
+          duration: 2000
+        })
+      }
       console.log(res);
-
     })
   },
   getMyTel: function(res){
@@ -171,30 +192,51 @@ Page({
         reqUrl: 'act1028e',
         method: 'doLogin',
         actCode: '1028',
-        js_code: res.code
+        openid: res.code
       }).then((data) => {
+        console.log(data)
         if (data.data.resultObj.state == '1') {
           //保存过手机号
           this.setData({
-            //phone: data.data.resultObj.phone,
-            getTel: true
+            myTel: data.data.resultObj.phone,
+            getTel: false
           })
         } else {
-          console.log(this.data.getPhone)
           this.setData({
-            getPhone: true
+            getPhone: false
           })
-          console.log(this.data.getPhone)
         }
 
       })
       console.log(res)
     })
   },
+  setPhone:function(){
+    this.setData({
+      getTel:true,
+      hiddenBox:false
+    })
+    app.globalData.loginPhone = this.data.myTel
+  },
+  outTime: function () {
+    var that = this
+    setTimeout(function () {
+      // console.log(this.data.time)
+      var time = this.data.time - 1
+      this.setData({
+        time: time
+      })
+      if (time > 0) {
+        this.outTime()
+      }
+    }.bind(that), 1000)
+
+  },
   /**
    * 接受挑战
    */
   accep:function(){
+   
     var that=this;
     if(app.globalData.loginPhone){
       app.ajax({
@@ -211,11 +253,11 @@ Page({
           if (res.data.resultObj.state == 1) {
             if (res.data.resultObj.pkLog.fLoser == that.data.myTel) {//失败
               wx: wx.navigateTo({
-                url: "/pages/netAge/netAgePK/netAgePK?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
+                url: "/pages/netAge/ChallengeFail/ChallengeFail?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
               })
             } else if (res.data.resultObj.pkLog.fWiner == that.data.myTel) {//成功
               wx: wx.navigateTo({
-                url: "/pages/netAge/ChallengeFail/ChallengeFail?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
+                url: "/pages/netAge/ChallengeSuccess/ChallengeSuccess?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
               })
             } else {//平
               wx: wx.navigateTo({
@@ -236,17 +278,17 @@ Page({
         }
       })
     }else{
-      this.setData({
-        getPhone: false
-      })
-      
+      // this.setData({
+      //   getPhone: false
+      // })
+      this.getPrize();
     }
     
   },
   /**
    * 领取礼品
    */
-  getPrize:function(){
+  goGetPrize:function(){
    wx:wx.navigateTo({
      url: "/pages/netAge/netAgePK/netAgePK?phone=" + this.data.myTel
    })
