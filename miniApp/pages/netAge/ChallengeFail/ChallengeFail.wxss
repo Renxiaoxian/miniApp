@@ -256,4 +256,20 @@ button{
   width: 500rpx;
   height: 95rpx;
 }
+.resultCover1{
+  position: absolute;
+  left: 140rpx;
+  top: 90rpx;
+  width: 88rpx;
+  height: 144rpx;
+  background-size:100% 100%;
+}
+.resultCover2{
+  position: absolute;
+  right: 140rpx;
+  top: 90rpx;
+  width: 88rpx;
+  height: 144rpx;
+  background-size:100% 100%;
+}
 /* pages/netAge/ChallengeResults/ChallengeResults.wxss */

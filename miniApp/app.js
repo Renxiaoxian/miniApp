@@ -1,4 +1,5 @@
 //app.js
+let util =require('./utils/storage.js')
 App({
   onLaunch: function () {
     // 展示本地存储能力
@@ -45,8 +46,8 @@ App({
       wx.request({
        //  url: 'http://hb.tztec.com:10000/app/act/actAction.do',
         //url: 'http://he.10086.cn/app/test/act/actAction.do',
-        //url:'https://www.he.10086.cn/app/act/actAction.do',
-        url:'http://he.10086.cn/app/test/act/actAction.do',
+        url:'https://www.he.10086.cn/app/act/actAction.do',
+        // url:'http://he.10086.cn/app/test/act/actAction.do',
         data: data,
         header: {
           'content-type': 'application/x-www-form-urlencoded'

@@ -16,7 +16,7 @@ Page({
     recipientTel: '',
     originatorDuration: '',
     recipientDuration: '',
-    status: 0,
+    status: 2,
     show: false
   },
   /**
@@ -63,13 +63,25 @@ Page({
         })
       }
       console.log(res)
-      var status = 0;
-      if (res.data.resultObj.pklb.fPlayer1 == res.data.resultObj.pklb.fWiner) {
-        status = 0
-      } else if (res.data.resultObj.pklb.fPlayer2 == res.data.resultObj.pklb.fWiner) {
-        status = 1
+      var status = 2;
+      if (res.data.resultObj.pklb.fPlayer1 == res.data.resultObj.pklb.fWiner) {//1胜利
+        status = 0;
+      } else if (res.data.resultObj.pklb.fPlayer2 == res.data.resultObj.pklb.fWiner) {//2胜利
+        status = 1;
+      } else {//平
+        status = 2;
+      }
+      var originatorDuration = '';
+      var recipientDuration = '';
+      if (res.data.resultObj.pklb.fTotalMonth1 > 12) {
+        originatorDuration = parseInt(res.data.resultObj.pklb.fTotalMonth1 / 12) + '年' + res.data.resultObj.pklb.fTotalMonth1 % 12 + '个月'
       } else {
-        status = 2
+        originatorDuration = res.data.resultObj.pklb.fTotalMonth1 + '个月';
+      }
+      if (res.data.resultObj.pklb.fTotalMonth2 > 12) {
+        recipientDuration = parseInt(res.data.resultObj.pklb.fTotalMonth2 / 12) + '年' + res.data.resultObj.pklb.fTotalMonth2 % 12 + '个月'
+      } else {
+        recipientDuration = res.data.resultObj.pklb.fTotalMonth2 + '个月';
       }
       that.setData({
         list: list,
@@ -77,9 +89,9 @@ Page({
         lqzxUrl: res.data.resultObj.lqzxUrl,
         phone: res.data.resultObj.phone,
         originatorTel: res.data.resultObj.pklb.fPlayer1,
-        originatorDuration: res.data.resultObj.pklb.fTotalMonth1,
+        originatorDuration: originatorDuration,
         recipientTel: res.data.resultObj.pklb.fPlayer2,
-        recipientDuration: res.data.resultObj.pklb.fTotalMonth2,
+        recipientDuration: recipientTel,
         status:status
       })
     })
@@ -164,6 +176,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function (ops) {
+    console.log(ops)
     if (ops.from === 'button') {
       if (app.globalData.loginPhone) {
         return {

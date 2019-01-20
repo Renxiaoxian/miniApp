@@ -1,5 +1,6 @@
 // pages/netAge/ChallengeBook/ChallengeBook.js
 const app = getApp()
+let util = require('../../../utils/storage.js')
 Page({
 
   /**
@@ -54,39 +55,36 @@ Page({
     })
   },
   login() {
-    app.getCode().then((res) => {
-      //reqUrl=act1028e&method=checkMsg&actCode=1028&mobile=13472197474&js_code=023sxEVi2G3EqC0JJTXi29TNVi2sxEV0&verification=670642
-      app.ajax({
-        reqUrl: 'act1028e',
-        method: 'checkMsg',
-        actCode: '1028',
-        mobile: this.data.myTel,
-        openid: res.code,
-        verification: this.data.code
-      }).then((data) => {
-        console.log(data)
-        if (data.data.resultObj.state == '1') {
-          wx.showToast({
-            title: '登录成功',
-            icon: 'success',
-            duration: 2000
-          })
-          this.setData({
-            getPhone: true,
-            hiddenBox: false,
-            myTel: data.data.resultObj.phone2
-          })
-          app.globalData.loginPhone = data.data.resultObj.phone2;
-          this.init();
-        } else {
-          wx.showToast({
-            title: data.data.resultObj.msg,
-            icon: 'none',
-            duration: 2000
-          })
-        }
-        console.log(data)
-      })
+    app.ajax({
+      reqUrl: 'act1028e',
+      method: 'checkMsg',
+      actCode: '1028',
+      mobile: this.data.myTel,
+      verification: this.data.code
+    }).then((data) => {
+      console.log(data)
+      if (data.data.resultObj.state == '1') {
+        wx.showToast({
+          title: '登录成功',
+          icon: 'success',
+          duration: 2000
+        })
+        this.setData({
+          getPhone: true,
+          hiddenBox: false,
+          myTel: this.data.myTel
+        })
+        util.put('phone', this.data.myTel, 172800)
+        app.globalData.loginPhone = this.data.myTel;
+        this.init();
+      } else {
+        wx.showToast({
+          title: data.data.resultObj.msg,
+          icon: 'none',
+          duration: 2000
+        })
+      }
+      console.log(data)
     })
   },
   inputCode(e) {
@@ -187,29 +185,17 @@ Page({
       this.init();
       return false;
     }
-    app.getCode().then((res) => {
-      app.ajax({
-        reqUrl: 'act1028e',
-        method: 'doLogin',
-        actCode: '1028',
-        openid: res.code
-      }).then((data) => {
-        console.log(data)
-        if (data.data.resultObj.state == '1') {
-          //保存过手机号
-          this.setData({
-            myTel: data.data.resultObj.phone,
-            getTel: false
-          })
-        } else {
-          this.setData({
-            getPhone: false
-          })
-        }
-
+    if (util.get('phone')) {
+      //保存过手机号
+      this.setData({
+        myTel: util.get('phone'),
+        getTel: false
       })
-      console.log(res)
-    })
+    } else {
+      this.setData({
+        getPhone: false
+      })
+    }
   },
   setPhone:function(){
     this.setData({

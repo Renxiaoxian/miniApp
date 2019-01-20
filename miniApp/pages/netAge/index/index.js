@@ -176,7 +176,7 @@ Page({
           title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
           imageUrl: this.data.localhost + 'shareImage.jpg',
           desc: '',
-          path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + app.globalData.phoneAES, //点击分享的图片进到哪一个页面
+          path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + this.data.phoneAES, //点击分享的图片进到哪一个页面
           success: function (res) {
             // 转发成功
             console.log("转发成功:" + JSON.stringify(res));
@@ -199,7 +199,7 @@ Page({
         title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
         imageUrl: this.data.localhost + 'shareImage.jpg',
         desc: '',
-        path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + app.globalData.phoneAES, //点击分享的图片进到哪一个页面
+        path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + this.data.phoneAES, //点击分享的图片进到哪一个页面
         success: function (res) {
           // 转发成功
         },

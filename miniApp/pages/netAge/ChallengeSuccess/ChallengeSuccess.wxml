@@ -4,11 +4,15 @@
   <view class='details' style='background-image:url({{localhost}}detailsBox.png);'>
     <view wx:if="{{status==0}}" class='resultIcon0' style='background-image:url({{localhost}}victory.png);'></view>
     <view wx:else class='resultIcon0' style='background-image:url({{localhost}}victory.png);'></view>
+    <text class='resultCover1' wx:if="{{status==0}}" style='background-image:url({{localhost}}successCover.png);'></text>
+    <text class='resultCover1' wx:else style='background-image:url({{localhost}}failCover.png);'></text>
+    <text class='resultCover2' wx:if="{{status==1}}" style='background-image:url({{localhost}}successCover.png);'></text>
+    <text class='resultCover2' wx:else style='background-image:url({{localhost}}failCover.png);'></text>
     <text class='originatorTel'>{{originatorTel}}</text>
     <text class='recipientTel'>{{recipientTel}}</text>
-    <text class='originatorDuration'>{{originatorDuration}}个月</text>
-    <text class='recipientDuration'>{{recipientDuration}}个月</text>
-    <view class='pkButton' bindtap='startPk'></view>
+    <text class='originatorDuration'>{{originatorDuration}}</text>
+    <text class='recipientDuration'>{{recipientDuration}}</text>
+    <button class='pkButton' bindtap='startPk' open-type="share" ></button>
   </view>
   <text bindtap='rule' class='rule'>活动规则</text>
   <text bindtap='activation' class='activation'>去领券中心激活</text>
@@ -16,7 +20,7 @@
     <view class='recordList'>
       <view wx:for="{{list}}" wx:key="key">
       <text class='recordDate' wx:if="{{item.date != list[index-1].date}}">{{item.date}}</text>          
-      <view class='record' wx:if="{{locadlhost}}" style='background-image:url({{locadlhost}}recordbackground.png);'>
+      <view class='record' wx:if="{{localhost}}" style='background-image:url({{localhost}}recordbackground.png);'>
           <view class='marker' wx:if="{{item.result==0}}" style='background-image:url({{localhost}}success.png);' ></view>
           <view class='marker' wx:elif="{{item.result==1}}" style='background-image:url({{localhost}}fail.png);' ></view>
           <view class='marker' wx:else style='background-image:url({{localhost}}falt1.png);' ></view>

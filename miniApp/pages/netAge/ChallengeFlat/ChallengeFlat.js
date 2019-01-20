@@ -69,15 +69,27 @@ Page({
       }else{
         status = 2
       }
+      var originatorDuration = '';
+      var recipientDuration = '';
+      if (res.data.resultObj.pklb.fTotalMonth1 > 12) {
+        originatorDuration = parseInt(res.data.resultObj.pklb.fTotalMonth1 / 12) + '年' + res.data.resultObj.pklb.fTotalMonth1 % 12 + '个月'
+      } else {
+        originatorDuration = res.data.resultObj.pklb.fTotalMonth1 + '个月';
+      }
+      if (res.data.resultObj.pklb.fTotalMonth2 > 12) {
+        recipientDuration = parseInt(res.data.resultObj.pklb.fTotalMonth2 / 12) + '年' + res.data.resultObj.pklb.fTotalMonth2 % 12 + '个月'
+      } else {
+        recipientDuration = res.data.resultObj.pklb.fTotalMonth2 + '个月';
+      }
       that.setData({
         list: list,
         phoneAES: res.data.resultObj.phoneAES,
         lqzxUrl: res.data.resultObj.lqzxUrl,
         phone: res.data.resultObj.phone,
         originatorTel: res.data.resultObj.pklb.fPlayer1,
-        originatorDuration: res.data.resultObj.pklb.fTotalMonth1,
+        originatorDuration: originatorDuration,
         recipientTel: res.data.resultObj.pklb.fPlayer2,
-        recipientDuration: res.data.resultObj.pklb.fTotalMonth2,
+        recipientDuration: recipientDuration,
       })
       console.log(that.data.list)
     })

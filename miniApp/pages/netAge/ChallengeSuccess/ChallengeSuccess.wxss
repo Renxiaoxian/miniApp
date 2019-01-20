@@ -1,4 +1,16 @@
 /* pages/netAge/index/index.wxss */
+button::after{
+  border: none;
+  outline: none;
+}
+.button-hover{
+  background: none;
+}
+button{
+  border: none;
+  background: none;
+  outline: none;
+}
 .show-background{
   position: absolute;
   width:100%;
@@ -30,7 +42,7 @@
   top: 1260rpx;
   width: 724rpx;
   height: 1015rpx;
-  background-size: cover;
+  background-size: 100% 100%;
 }
  .recordList{
   position: absolute;
@@ -51,7 +63,7 @@
   margin-bottom: 20rpx;
   width: 625rpx;
   height: 125rpx;
-  background-size: cover;
+  background-size: 100% 100%;
   line-height: 125rpx;
 }
 .vs{
@@ -80,7 +92,7 @@
   left: 1rpx;
   width: 55rpx;
   height: 59rpx;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 .state{
   position: absolute;
@@ -88,19 +100,19 @@
   right: 20rpx;
   width: 217rpx;
   height: 84rpx;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 .resultWord{
   width: 412rpx;
   height: 69rpx;
-  background-size: cover;
+  background-size: 100% 100%;
   margin: 110rpx auto 0;
 }
 .details{
   position: relative;
   width: 718rpx;
   height: 928rpx;
-  background-size: cover;
+  background-size: 100% 100%;
   margin: 45rpx auto 0;
 }
 .resultIcon1{
@@ -109,7 +121,7 @@
   left: 66rpx;
   width: 63rpx;
   height: 69rpx;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 .resultIcon0{
   position: absolute;
@@ -117,7 +129,7 @@
   right: 66rpx;
   width: 63rpx;
   height: 69rpx;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 .originatorTel{
   position: absolute;
@@ -226,7 +238,7 @@
   height: 830rpx;
   background-color: #fff;
   border-radius: 20rpx;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 .close{
   width: 72rpx;
@@ -234,7 +246,7 @@
   position: absolute;
   right: 53rpx;
   top: 213rpx;
-  background-size: cover;
+  background-size: 100% 100%;
   z-index: 888;
 }
 .appbutton{
@@ -243,5 +255,21 @@
   top: 655rpx;
   width: 500rpx;
   height: 95rpx;
+}
+.resultCover1{
+  position: absolute;
+  left: 140rpx;
+  top: 90rpx;
+  width: 88rpx;
+  height: 144rpx;
+  background-size:100% 100%;
+}
+.resultCover2{
+  position: absolute;
+  right: 140rpx;
+  top: 90rpx;
+  width: 88rpx;
+  height: 144rpx;
+  background-size:100% 100%;
 }
 /* pages/netAge/ChallengeResults/ChallengeResults.wxss */

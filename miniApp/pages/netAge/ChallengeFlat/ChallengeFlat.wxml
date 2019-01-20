@@ -2,10 +2,14 @@
 <view class='show-background' wx:if='{{localhost}}' style='background-image:url({{localhost}}ChallengeResults.png);'>
   <view class='resultWord' style='background-image:url({{localhost}}faltWord.png);'></view>
   <view class='details' style='background-image:url({{localhost}}detailsBoxFalt.png);'>
+    <text class='resultCover1' wx:if="{{status==0}}" style='background-image:url({{localhost}}successCover.png);'></text>
+    <text class='resultCover1' wx:else style='background-image:url({{localhost}}failCover.png);'></text>
+    <text class='resultCover2' wx:if="{{status==1}}" style='background-image:url({{localhost}}successCover.png);'></text>
+    <text class='resultCover2' wx:else style='background-image:url({{localhost}}failCover.png);'></text>
     <text class='originatorTel'>{{originatorTel}}</text>
     <text class='recipientTel'>{{recipientTel}}</text>
-    <text class='originatorDuration'>{{originatorDuration}}个月</text>
-    <text class='recipientDuration'>{{recipientDuration}}个月</text>
+    <text class='originatorDuration'>{{originatorDuration}}</text>
+    <text class='recipientDuration'>{{recipientDuration}}</text>
     <text class='duration'>{{recipientDuration}}个月</text>
     <button class='pkButton' open-type="share"></button> 
   </view>

@@ -4,12 +4,16 @@
   <view class='details' style='background-image:url({{localhost}}detailsBoxFail.png);'>
    <view wx:if="{{status==0}}" class='resultIcon0' style='background-image:url({{localhost}}fail.png);'></view>
     <view wx:else class='resultIcon0' style='background-image:url({{localhost}}fail.png);'></view>
+    <text class='resultCover1' wx:if="{{status==0}}" style='background-image:url({{localhost}}successCover.png);'></text>
+    <text class='resultCover1' wx:else style='background-image:url({{localhost}}failCover.png);'></text>
+    <text class='resultCover2' wx:if="{{status==1}}" style='background-image:url({{localhost}}successCover.png);'></text>
+    <text class='resultCover2' wx:else style='background-image:url({{localhost}}failCover.png);'></text>
     <text class='originatorTel'>{{originatorTel}}</text>
     <text class='recipientTel'>{{recipientTel}}</text>
-    <text class='originatorDuration'>{{originatorDuration}}个月</text>
-    <text class='recipientDuration'>{{recipientDuration}}个月</text>
+    <text class='originatorDuration'>{{originatorDuration}}</text>
+    <text class='recipientDuration'>{{recipientDuration}}</text>
     
-    <view class='pkButton' bindtap='startPk'></view>
+    <button class='pkButton' bindtap='startPk' open-type="share" ></button>
   </view>
   <text bindtap='rule' class='rule'>活动规则</text>
   <text bindtap='activation' class='activation'>去领券中心激活</text>

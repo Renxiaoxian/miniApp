@@ -9,6 +9,7 @@
     "pages/netAge/ChallengeFlat/ChallengeFlat",
     "pages/netAge/ChallengeFail/ChallengeFail",
     "pages/netAge/ChallengeSuccess/ChallengeSuccess",
+    
     "pages/netAge/webView/webView"
   ],
   "window": {

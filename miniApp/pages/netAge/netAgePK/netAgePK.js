@@ -1,6 +1,6 @@
 const app = getApp()
 // pages/netAge/netAgePK/netAgePK.js
-
+let util = require('../../../utils/storage.js')
 Page({
 
   /**
@@ -36,7 +36,6 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
     // if (app.globalData.loginPhone){
     //   this.init();
     // }
@@ -64,40 +63,36 @@ Page({
     })
   },
   login(){
-    app.getCode().then((res)=>{
-      console.log(1111)
-      //reqUrl=act1028e&method=checkMsg&actCode=1028&mobile=13472197474&js_code=023sxEVi2G3EqC0JJTXi29TNVi2sxEV0&verification=670642
-      app.ajax({
-        reqUrl:'act1028e',
-        method:'checkMsg',
-        actCode:'1028',
-        mobile:this.data.phone,
-        openid:res.code,
-        verification:this.data.code
-      }).then((data)=>{
-        console.log(data)
-        if (data.data.resultObj.state == '0'){
-          wx.showToast({
-            title: data.data.resultObj.msg,
-            icon: none,
-            duration:2000
-          })
-        }else{
-          wx.showToast({
-            title: '登录成功',
-            icon: 'success',
-            duration: 2000
-          })
-          this.setData({
-            getPhone:false,
-            priceDisabled:true
-          })
-          // app.globalData.phoneAES = data.data.resultObj.phoneAES
-          app.globalData.loginPhone = data.data.resultObj.phone;
-          this.openFn()
-        }
-        
-      })
+    app.ajax({
+      reqUrl: 'act1028e',
+      method: 'checkMsg',
+      actCode: '1028',
+      mobile: this.data.phone,
+      verification: this.data.code
+    }).then((data) => {
+      console.log(data)
+      if (data.data.resultCode == '0') {
+        wx.showToast({
+          title: '验证失败',
+          icon: none,
+          duration: 2000
+        })
+      } else {
+        wx.showToast({
+          title: '登录成功',
+          icon: 'success',
+          duration: 2000
+        })
+        this.setData({
+          getPhone: false,
+          priceDisabled: true
+        })
+        // app.globalData.phoneAES = data.data.resultObj.phoneAES
+        app.globalData.loginPhone = this.data.phone;
+        util.put('phone', this.data.phone,172800);
+        this.openFn()
+      }
+
     })
   },
   openFn(){
@@ -196,33 +191,20 @@ Page({
       this.init();
       return false;
     }
-    app.getCode().then((res) => {
-      app.ajax({
-        reqUrl: 'act1028e',
-        method: 'doLogin',
-        actCode: '1028',
-        openid:res.code
-      }).then((data) => {
-        console.log(data)
-        if (data.data.resultObj && data.data.resultObj.state == '1'){
-          //保存过手机号
-          this.setData({
-            phone: data.data.resultObj.phone,
-            getTel:true
-          })
-          app.globalData.loginPhone = data.data.resultObj.phone
-        }else{
-
-          this.setData({
-            getPhone: true,
-            priceDisabled:true
-          })
-
-        }
-        
+    if (util.get('phone')) {
+      //保存过手机号
+      this.setData({
+        phone: util.get('phone'),
+        getTel: true
       })
-      console.log(res)
-    })
+      app.globalData.loginPhone = util.get('phone')
+    } else {
+      this.setData({
+        getPhone: true,
+        priceDisabled: true
+      })
+
+    }
   },
   cut(){
     this.setData({
@@ -289,7 +271,7 @@ Page({
     })
   },
   getMylw(){
-    this.init();
+    this.getPrize();
     this.setData({
       fn:"init"
     })
@@ -298,7 +280,6 @@ Page({
   outTime: function () {
     var that = this
     setTimeout(function () {
-      console.log(this.data.time)
       var time = this.data.time - 1
       this.setData({
         time: time
