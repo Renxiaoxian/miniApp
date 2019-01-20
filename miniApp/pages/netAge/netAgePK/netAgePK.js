@@ -71,10 +71,10 @@ Page({
       verification: this.data.code
     }).then((data) => {
       console.log(data)
-      if (data.data.resultCode == '0') {
+      if (data.data.resultObj.state == '0') {
         wx.showToast({
           title: '验证失败',
-          icon: none,
+          icon: 'none',
           duration: 2000
         })
       } else {
@@ -88,8 +88,8 @@ Page({
           priceDisabled: true
         })
         // app.globalData.phoneAES = data.data.resultObj.phoneAES
-        app.globalData.loginPhone = this.data.phone;
-        util.put('phone', this.data.phone,172800);
+        app.globalData.loginPhone = data.data.resultObj.phone;
+        util.put('phone', data.data.resultObj.phone,172800);
         this.openFn()
       }
 
