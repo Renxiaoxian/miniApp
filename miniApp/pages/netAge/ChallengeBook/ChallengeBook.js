@@ -72,10 +72,10 @@ Page({
         this.setData({
           getPhone: true,
           hiddenBox: false,
-          myTel: this.data.myTel
+          myTel: data.data.resultObj.phone
         })
-        util.put('phone', this.data.myTel, 172800)
-        app.globalData.loginPhone = this.data.myTel;
+        util.put('phone', data.data.resultObj.phone, 172800)
+        app.globalData.loginPhone = data.data.resultObj.phone;
         this.init();
       } else {
         wx.showToast({

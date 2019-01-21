@@ -69,10 +69,10 @@ Page({
       verification: this.data.code
     }).then((data) => {
       console.log(data)
-      if (data.data.resultCode == '0') {
+      if (data.data.resultObj.state == '0') {
         wx.showToast({
           title: '验证失败',
-          icon: none,
+          icon: 'none',
           duration: 2000
         })
       } else {
@@ -87,6 +87,7 @@ Page({
           getPhone:false
         })
         this.init(data.data.resultObj.phone)
+
       }
     })
   },
