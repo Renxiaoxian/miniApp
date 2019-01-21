@@ -7,7 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    show:false,
+    show:false, 
     basic:'',
     total:'?',
     circle_active:'circle_active',
@@ -36,26 +36,24 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    // if (app.globalData.loginPhone){
-    //   this.init();
-    // }
-    // if (options){
-    //   this.setData({
-    //     myTel: options.phone
-    //   })
-    // }
-    this.setData({
-      localhost: app.globalData.getImage,
-      phone: app.globalData.loginPhone,
-      getTel: false
+    let _this = this;
+    wx.getStorage({
+      key: 'loginInfo',
+      success(res) {
+        console.log(res)
+        app.globalData.loginInfo = res.data
+        _this.setData({
+          phone:res.data.phone,
+          getTel:true
+        })
+        _this.init(res.data.phone)
+      },
+      fail(err){
+        _this.setData({
+          getPhone: true
+        })
+      }
     })
-    if (app.globalData.loginPhone){
-      this.init();
-    }else{
-      this.setData({
-        priceDisabled:false
-      })
-    }
   },
   showrule: function () {
     this.setData({
@@ -83,33 +81,20 @@ Page({
           icon: 'success',
           duration: 2000
         })
-        this.setData({
-          getPhone: false,
-          priceDisabled: true
-        })
         // app.globalData.phoneAES = data.data.resultObj.phoneAES
-        app.globalData.loginPhone = this.data.phone;
-        util.put('phone', this.data.phone,172800);
-        this.openFn()
+        this.setData({
+          phone: data.data.resultObj.phone,
+          getPhone:false
+        })
+        this.init(data.data.resultObj.phone)
       }
-
     })
   },
   openFn(){
-    console.log(this.data.fn)
-    switch (this.data.fn){
-      case 'init':
-      this.init()
-      break;
-      case 'share':
-        this.init()
-      break;
-      case 'gopk':
-        wx.navigateTo({
-          url: '/pages/netAge/index/index?phone=' + this.data.phone
-        })
-        break;
-    }
+    this.setData({
+      getPhone: false,
+      getTel: false
+    })
   },
   inputcode(e){
     console.log(e)
@@ -132,19 +117,23 @@ Page({
       url: '/pages/netAge/webView/webView?lqzxUrl=' + encodeURIComponent("https://www.he.10086.cn/app/ecu/resource/download/html/index.html")
     })
   },
-  init(){
-    console.log('333')
+  init(phone){
+    console.log(phone)
     var that = this;
     app.ajax({
       reqUrl: 'act1028e',
       method: 'initPage',
       actCode: '1028',
       param: 'null',
-      mobile: that.data.phone,
+      mobile: phone,
       city: '0311'
     }).then((res) => {
       if (res.data.resultCode == 1) {
         if (res.data.resultObj.state != 3) {
+          wx.setStorage({
+            key: 'loginInfo',
+            data:res.data.resultObj
+          })
           var times = res.data.resultObj.times ? res.data.resultObj.times : 2;
           that.setData({
             times: times,
@@ -153,7 +142,6 @@ Page({
             phoneAES: res.data.resultObj.phoneAES,
             total: res.data.resultObj.totalprize,
             state: res.data.resultObj.state,
-            getTel:false,
             priceDisabled:true
           })
           app.globalData.phoneAES = res.data.resultObj.phoneAES
@@ -184,7 +172,6 @@ Page({
     })
   },
   getPrize(type) {
-    console.log('getPrize')
     //判断是否存储过手机号
     if (app.globalData.loginPhone){
       console.log(app.globalData.loginPhone)
@@ -224,7 +211,6 @@ Page({
    * 获取验证码
    */
   sendCode(){
-   
     if(this.data.time > 0){
      return false;
     }
@@ -269,13 +255,6 @@ Page({
       
 
     })
-  },
-  getMylw(){
-    this.getPrize();
-    this.setData({
-      fn:"init"
-    })
-    
   },
   outTime: function () {
     var that = this
@@ -348,7 +327,6 @@ Page({
    * 用户点击右上角分享
    */
   onShare(){
-    console.log(2222)
     this.setData({
       fn:'init'
     })
@@ -362,47 +340,16 @@ Page({
    
   },
   onShareAppMessage: function (ops) {
-    console.log(ops);
-    if (ops.from === 'button') {
-      console.log(".......................")
-      
-      if (app.globalData.loginPhone) {
-        console.log(this.data.phoneAES)
-        var phoneAES = this.data.phoneAES;
-        return {
-          title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
-          imageUrl: this.data.localhost + 'shareImage.jpg',
-          desc: '',
-          path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + phoneAES, //点击分享的图片进到哪一个页面
-          success: function (res) {
-            // 转发成功
-            console.log("转发成功:" + JSON.stringify(res));
-          },
-          fail: function (res) {
-            // 转发失败
-            console.log("转发失败:" + JSON.stringify(res));
-          }
-        }
-      } else {
-        this.setData({
-          getPhone: false
-        })
-        return false
-      }
-      // 来自页面内转发按钮
-      
-    }else{
-      return {
-        title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
-        imageUrl: this.data.localhost+'shareImage.jpg',
-        desc: '',
-        path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + this.data.phoneAES,  //点击分享的图片进到哪一个页面
-        success: function (res) {
-          // 转发成功
-        },
-        fail: function (res) {
-          // 转发失败
-        }
+    return {
+      title: '人人有新年礼，PK再赢话费，快来挑战我吧！',
+      imageUrl: this.data.localhost + 'shareImage.jpg',
+      desc: '',
+      path: 'pages/netAge/ChallengeBook/ChallengeBook?p1=' + this.data.phoneAES,  //点击分享的图片进到哪一个页面
+      success: function (res) {
+        // 转发成功
+      },
+      fail: function (res) {
+        // 转发失败
       }
     }
   }

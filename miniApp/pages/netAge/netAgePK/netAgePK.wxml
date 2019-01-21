@@ -51,7 +51,7 @@
       <view class="dedao">每月最高可得<text>20</text>元</view>
       <view class="challengeBtn">
      <image src="{{localhost}}challenge_btn.png"></image>
-     <button open-type='{{phone?"share":""}}' bindtap='onShare'>我要挑战</button>
+     <button open-type='share'>我要挑战</button>
    </view>
     </view>
 
@@ -84,13 +84,12 @@
      <view> 获取到您的手机号为：<text>{{phone}}</text></view>
       是否使用前手机号
     </view>
-    <button class='useTel' open-type='{{fn}}' bindtap='openFn'>使用当前手机号</button>
+    <button class='useTel' bindtap='openFn'>使用当前手机号</button>
     <button class='cutTel' bindtap='cut'>换一个号码</button>
   </view>
 </view>
 <view class='getTel' wx:if='{{getPhone}}'>
   <view class='show-popup'>
-    <view bindtap='offTel' class='off-rule' style='background-image:url({{localhost}}rule_close.png);'></view>
     <image src='{{localhost}}tishi_tit.png' mode='widthFix'></image>
     <input class='inputTel' bindblur='inputPhone' type='number' placeholder='请输入河北移动手机号' placeholder-class='placeholder'></input>
     <input class='senCode' type='number' placeholder='请输入短信验证码' placeholder-class='placeholder' bindblur='inputcode'></input>

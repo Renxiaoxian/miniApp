@@ -46,7 +46,7 @@ App({
       wx.request({
        //  url: 'http://hb.tztec.com:10000/app/act/actAction.do',
         //url: 'http://he.10086.cn/app/test/act/actAction.do',
-        url:'https://www.he.10086.cn/app/act/actAction.do',
+        url:'https://www.he.10086.cn/app/test/act/actAction.do',
         // url:'http://he.10086.cn/app/test/act/actAction.do',
         data: data,
         header: {
