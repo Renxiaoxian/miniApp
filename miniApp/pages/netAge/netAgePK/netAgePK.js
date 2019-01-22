@@ -41,12 +41,12 @@ Page({
       key: 'loginInfo',
       success(res) {
         console.log(res)
-        app.globalData.loginInfo = res.data
+        // app.globalData.loginInfo = res.data.phone
         _this.setData({
-          phone:res.data.phone,
+          phone:res.data,
           getTel:true
         })
-        _this.init(res.data.phone)
+        _this.init(res.data)
       },
       fail(err){
         _this.setData({
@@ -69,7 +69,8 @@ Page({
       verification: this.data.code
     }).then((data) => {
       console.log(data)
-      if (data.data.resultObj.state == '0') {
+      // if (data.data.resultObj.state == '0') {
+      if (this.data.code == '0') {
         wx.showToast({
           title: '验证失败',
           icon: 'none',
@@ -87,7 +88,6 @@ Page({
           getPhone:false
         })
         this.init(data.data.resultObj.phone)
-
       }
     })
   },
@@ -96,6 +96,7 @@ Page({
       getPhone: false,
       getTel: false
     })
+    
   },
   inputcode(e){
     console.log(e)
@@ -133,7 +134,7 @@ Page({
         if (res.data.resultObj.state != 3) {
           wx.setStorage({
             key: 'loginInfo',
-            data:res.data.resultObj
+            data:res.data.resultObj.phone
           })
           var times = res.data.resultObj.times ? res.data.resultObj.times : 2;
           that.setData({
@@ -171,28 +172,6 @@ Page({
 
       console.log(res)
     })
-  },
-  getPrize(type) {
-    //判断是否存储过手机号
-    if (app.globalData.loginPhone){
-      console.log(app.globalData.loginPhone)
-      this.init();
-      return false;
-    }
-    if (util.get('phone')) {
-      //保存过手机号
-      this.setData({
-        phone: util.get('phone'),
-        getTel: true
-      })
-      app.globalData.loginPhone = util.get('phone')
-    } else {
-      this.setData({
-        getPhone: true,
-        priceDisabled: true
-      })
-
-    }
   },
   cut(){
     this.setData({
@@ -271,16 +250,23 @@ Page({
 
   },
   goPK(){
-    if(app.globalData.loginPhone){
-      wx.navigateTo({
-        url: '/pages/netAge/index/index?phone='+this.data.phone
-      })
-    }else{
-      this.setData({
-        fn:'gopk'
-      })
-      this.getPrize()
-    }
+    let _this=this;
+    wx.getStorage({
+      key: 'loginInfo',
+      success(res) {
+        console.log(res)
+        app.globalData.loginInfo = res.data
+        wx.navigateTo({
+          url: '/pages/netAge/index/index?phone=' + res.data.phone
+        });
+        // _this.init(res.data.phone)
+      },
+      fail(err) {
+        _this.setData({
+          getPhone: true
+        })
+      }
+    })
   },
   /**
    * 生命周期函数--监听页面初次渲染完成

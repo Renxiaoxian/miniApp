@@ -6,6 +6,7 @@
     "pages/netAge/index/index",
     "pages/netAge/getPrize/getPrize",
     "pages/netAge/ChallengeBook/ChallengeBook",
+    
     "pages/netAge/ChallengeFlat/ChallengeFlat",
     "pages/netAge/ChallengeFail/ChallengeFail",
     "pages/netAge/ChallengeSuccess/ChallengeSuccess",

@@ -7,7 +7,7 @@
 <view class='recordList'>
 <view wx:for="{{list}}" wx:key="key">
 <text class='recordDate' wx:if="{{item.date != list[index-1].date}}">{{item.date}}</text> 
-<view class='record' style='background-image:url({{locadlhost}}recordbackground.png);'>
+<view class='record' wx:if="{{localhost}}" style='background-image:url({{localhost}}recordbackground.png);'>
   <view class='marker' wx:if="{{item.result == 0}}" style='background-image:url({{localhost}}success.png);' ></view>
   <view class='marker' wx:elif="{{item.result == 1}}" style='background-image:url({{localhost}}fail.png);' ></view>
   <view class='marker' wx:else style='background-image:url({{localhost}}falt1.png);' ></view>

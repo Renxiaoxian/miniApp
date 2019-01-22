@@ -23,19 +23,30 @@ Page({
   onLoad: function (options) {
     this.setData({
       localhost: app.globalData.getImage,
-      p1: options.p1,
-      // p1:'8B1CA7C84FFBDF55D690BEEDC4050A42',
-      myTel: app.globalData.loginPhone
+      // p1: options.p1,
+      p1:'8B1CA7C84FFBDF55D690BEEDC4050A42'
     })
-    this.init()
-    if(!app.globalData.loginPhone){
-      this.setData({
-        // getPhone: false,
-        hiddenBox: true
-      })
-    }
+    let _this = this;
+    wx.getStorage({
+      key: 'loginInfo',
+      success(res) {
+        console.log(res)
+        app.globalData.loginInfo = res.data
+        _this.setData({
+          myTel: res.data.phone2,
+          getTel: false,
+          hiddenBox:false
+        })
+        _this.init(res.data.phone2)
+      },
+      fail(err) {
+        _this.setData({
+          getPhone: false
+        })
+      }
+    })
   },
-  init:function()
+  init(phone)
   {
     var that = this;
     app.ajax({
@@ -43,10 +54,14 @@ Page({
       method: 'initAcceptPK',
       actCode: '1028',
       param: '2D8165082DECAE8A60096E2CFC50F6AF',
-      mobile: that.data.myTel,
+      mobile: phone,
       city: '311',
       p1: that.data.p1
     }).then((res) => {
+      wx.setStorage({
+        key: 'loginInfo',
+        data: res.data.resultObj
+      })
       that.setData({
         friendTel: res.data.resultObj.phone1,
         myTel: res.data.resultObj.phone2
@@ -55,6 +70,7 @@ Page({
     })
   },
   login() {
+    let _this=this;
     app.ajax({
       reqUrl: 'act1028e',
       method: 'checkMsg',
@@ -63,20 +79,19 @@ Page({
       verification: this.data.code
     }).then((data) => {
       console.log(data)
-      if (data.data.resultObj.state == '1') {
+      // if (data.data.resultObj.state == '1') {
+      if (this.data.code == '1') {
         wx.showToast({
           title: '登录成功',
           icon: 'success',
           duration: 2000
         })
-        this.setData({
+        _this.setData({
           getPhone: true,
           hiddenBox: false,
           myTel: data.data.resultObj.phone
         })
-        util.put('phone', data.data.resultObj.phone, 172800)
-        app.globalData.loginPhone = data.data.resultObj.phone;
-        this.init();
+        _this.init(data.data.resultObj.phone)
       } else {
         wx.showToast({
           title: data.data.resultObj.msg,
@@ -84,14 +99,12 @@ Page({
           duration: 2000
         })
       }
-      console.log(data)
     })
   },
   inputCode(e) {
     this.setData({
       code: e.detail.value
     })
-    console.log(this.data.code)
   },
   /**
    * 输入我的号码
@@ -179,24 +192,6 @@ Page({
       myTel: res.detail.value
     })
   },
-  getPrize(type) {
-    //判断是否存储过手机号
-    if (app.globalData.loginPhone) {
-      this.init();
-      return false;
-    }
-    if (util.get('phone')) {
-      //保存过手机号
-      this.setData({
-        myTel: util.get('phone'),
-        getTel: false
-      })
-    } else {
-      this.setData({
-        getPhone: false
-      })
-    }
-  },
   setPhone:function(){
     this.setData({
       getTel:true,
@@ -222,54 +217,61 @@ Page({
    * 接受挑战
    */
   accep:function(){
-   
-    var that=this;
-    if(app.globalData.loginPhone){
-      app.ajax({
-        reqUrl: 'act1028e',
-        method: 'acceptPK',
-        actCode: '1028',
-        param: '2D8165082DECAE8A60096E2CFC50F6AF',
-        mobile: that.data.myTel,
-        city: '311',
-        p1: that.data.p1
-      }).then((res) => {
-        console.log(res);
-        if (res.data.resultCode == 1) {
-          if (res.data.resultObj.state == 1) {
-            if (res.data.resultObj.pkLog.fLoser == that.data.myTel) {//失败
-              wx: wx.navigateTo({
-                url: "/pages/netAge/ChallengeFail/ChallengeFail?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
-              })
-            } else if (res.data.resultObj.pkLog.fWiner == that.data.myTel) {//成功
-              wx: wx.navigateTo({
-                url: "/pages/netAge/ChallengeSuccess/ChallengeSuccess?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
-              })
-            } else {//平
-              wx: wx.navigateTo({
-                url: "/pages/netAge/ChallengeFlat/ChallengeFlat?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
-              })
-            }
-          } else {
-            wx.showToast({
-              title: res.data.resultObj.msg,
-              icon: 'none',
+    var _this=this;
+    wx.getStorage({
+      key: 'loginInfo',
+      success: function (logRes) {
+        console.log(logRes)
+        app.globalData.loginInfo = logRes.data
+        _this.accepChallenge(logRes.data.phone2)
+      },
+      fail(err) {
+        _this.setData({
+          getPhone: false
+        })
+      }
+    })
+  },
+  accepChallenge(phone){
+    let that =this;
+    app.ajax({
+      reqUrl: 'act1028e',
+      method: 'acceptPK',
+      actCode: '1028',
+      param: '2D8165082DECAE8A60096E2CFC50F6AF',
+      mobile: phone,
+      city: '311',
+      p1: that.data.p1
+    }).then((res) => {
+      console.log(res);
+      if (res.data.resultCode == 1) {
+        if (res.data.resultObj.state == 1) {
+          if (res.data.resultObj.pkLog.fLoser == that.data.myTel) {//失败
+            wx: wx.navigateTo({
+              url: "/pages/netAge/ChallengeFail/ChallengeFail?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
+            })
+          } else if (res.data.resultObj.pkLog.fWiner == that.data.myTel) {//成功
+            wx: wx.navigateTo({
+              url: "/pages/netAge/ChallengeSuccess/ChallengeSuccess?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
+            })
+          } else {//平
+            wx: wx.navigateTo({
+              url: "/pages/netAge/ChallengeFlat/ChallengeFlat?pkGiftId=" + res.data.resultObj.pkid + "&phone=" + that.data.myTel
             })
           }
         } else {
           wx.showToast({
-            title: res.data.resultMsg,
+            title: res.data.resultObj.msg,
             icon: 'none',
           })
         }
-      })
-    }else{
-      // this.setData({
-      //   getPhone: false
-      // })
-      this.getPrize();
-    }
-    
+      } else {
+        wx.showToast({
+          title: res.data.resultMsg,
+          icon: 'none',
+        })
+      }
+    })
   },
   /**
    * 领取礼品
