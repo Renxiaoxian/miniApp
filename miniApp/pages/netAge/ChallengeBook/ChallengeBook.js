@@ -23,8 +23,8 @@ Page({
   onLoad: function (options) {
     this.setData({
       localhost: app.globalData.getImage,
-      // p1: options.p1,
-      p1:'8B1CA7C84FFBDF55D690BEEDC4050A42'
+      p1: options.p1,
+      // p1:'8B1CA7C84FFBDF55D690BEEDC4050A42'
     })
     let _this = this;
     wx.getStorage({
