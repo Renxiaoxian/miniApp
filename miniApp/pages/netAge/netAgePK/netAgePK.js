@@ -69,8 +69,8 @@ Page({
       verification: this.data.code
     }).then((data) => {
       console.log(data)
-      // if (data.data.resultObj.state == '0') {
-      if (this.data.code == '0') {
+      if (data.data.resultObj.state == '0') {
+      // if (this.data.code == '0') {
         wx.showToast({
           title: '验证失败',
           icon: 'none',

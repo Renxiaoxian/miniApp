@@ -33,11 +33,11 @@ Page({
         console.log(res)
         app.globalData.loginInfo = res.data
         _this.setData({
-          myTel: res.data.phone2,
+          myTel: res.data,
           getTel: false,
           hiddenBox:false
         })
-        _this.init(res.data.phone2)
+        _this.init(res.data)
       },
       fail(err) {
         _this.setData({
@@ -60,7 +60,7 @@ Page({
     }).then((res) => {
       wx.setStorage({
         key: 'loginInfo',
-        data: res.data.resultObj
+        data: res.data.resultObj.phone2
       })
       that.setData({
         friendTel: res.data.resultObj.phone1,
@@ -79,8 +79,8 @@ Page({
       verification: this.data.code
     }).then((data) => {
       console.log(data)
-      // if (data.data.resultObj.state == '1') {
-      if (this.data.code == '1') {
+      if (data.data.resultObj.state == '1') {
+      // if (this.data.code == '1') {
         wx.showToast({
           title: '登录成功',
           icon: 'success',
@@ -223,7 +223,7 @@ Page({
       success: function (logRes) {
         console.log(logRes)
         app.globalData.loginInfo = logRes.data
-        _this.accepChallenge(logRes.data.phone2)
+        _this.accepChallenge(logRes.data)
       },
       fail(err) {
         _this.setData({
